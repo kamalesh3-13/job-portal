@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Page Not Found | JobPortal</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .notfound-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .notfound-page .shape { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.1; }
+    .notfound-page .shape-1 { width: 500px; height: 500px; background: #0ea5e9; top: -150px; right: -100px; }
+    .notfound-page .shape-2 { width: 350px; height: 350px; background: #06b6d4; bottom: -80px; left: -80px; }
+
+    .nf-logo { margin-bottom: 48px; position: relative; z-index: 1; }
+    .nf-logo img {
+      height: 44px; width: auto;
+      filter: brightness(1.1) drop-shadow(0 0 8px rgba(14,165,233,0.45));
+    }
+
+    .nf-code {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(100px, 22vw, 180px);
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative; z-index: 1;
+      margin-bottom: 8px;
+      letter-spacing: -4px;
+    }
+
+    .nf-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+      position: relative; z-index: 1;
+      animation: bounce 2s ease infinite;
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .nf-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(22px, 5vw, 36px);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+      position: relative; z-index: 1;
+    }
+
+    .nf-desc {
+      font-size: 16px;
+      color: #94A3B8;
+      max-width: 420px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+      position: relative; z-index: 1;
+    }
+
+    .nf-actions {
+      display: flex; gap: 14px; flex-wrap: wrap;
+      justify-content: center;
+      position: relative; z-index: 1;
+    }
+
+    .nf-home {
+      padding: 13px 28px;
+      background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+      border-radius: 12px; color: #fff; text-decoration: none;
+      font-size: 15px; font-weight: 700;
+      box-shadow: 0 8px 24px rgba(14,165,233,0.4);
+      transition: all 0.2s;
+    }
+    .nf-home:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    .nf-back {
+      padding: 13px 28px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px; color: #E2E8F0; text-decoration: none;
+      font-size: 15px; font-weight: 600;
+      transition: all 0.2s; cursor: pointer; background: transparent;
+      font-family: 'Inter', sans-serif;
+    }
+    .nf-back:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.25); }
+
+    @media (max-width: 480px) {
+      .nf-code { letter-spacing: -2px; }
+      .nf-actions { flex-direction: column; width: 100%; max-width: 280px; }
+      .nf-home, .nf-back { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="notfound-page">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+
+    <div class="nf-logo">
+      <a href="index.html">
+        <img src="assets/images/logo.webp" alt="JobPortal" />
+      </a>
+    </div>
+
+    <div class="nf-code">404</div>
+
+    <div class="nf-icon">🔍</div>
+
+    <h1 class="nf-title">Page Not Found</h1>
+    <p class="nf-desc">Oops! The page you're looking for doesn't exist yet. It might be coming soon or the link may have changed.</p>
+
+    <div class="nf-actions">
+      <a href="index.html" class="nf-home"><i class="fa-solid fa-house"></i> Back to Home</a>
+      <button class="nf-back" onclick="history.back()"><i class="fa-solid fa-arrow-left"></i> Go Back</button>
+    </div>
+  </div>
+</body>
+</html>

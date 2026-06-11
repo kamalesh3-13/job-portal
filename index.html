@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loading | JobPortal</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="loader-content">
+      <div class="loader-logo">
+        <img src="assets/images/logo.webp" alt="JobPortal Logo" class="loader-logo-img" />
+      </div>
+      <p class="loader-tagline">Finding Your Dream Career...</p>
+      <div class="loader-bar"><div class="loader-progress"></div></div>
+    </div>
+  </div>
+
+  <!-- MAIN SITE -->
+  <div id="main-site" style="display:none;">
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo">
+          <img src="assets/images/logo.webp" alt="JobPortal" class="nav-logo-img" />
+        </a>
+        <ul class="nav-links">
+          <li><a href="#jobs">Find Jobs</a></li>
+          <li><a href="#companies">Companies</a></li>
+          <li><a href="#categories">Categories</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="404.html" class="btn-outline">Sign In</a>
+          <a href="404.html" class="btn-primary">Post a Job</a>
+        </div>
+        <button class="hamburger" onclick="openMenu()">
+          <i class="fa-solid fa-bars" id="hamburgerIcon"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- MOBILE MENU — FULL SCREEN (outside navbar, fixed overlay) -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-menu-header">
+        <a href="index.html" class="mob-logo">
+          <img src="assets/images/logo.webp" alt="JobPortal" />
+        </a>
+        <button class="mobile-menu-close" onclick="closeMenu()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <ul>
+        <li><a href="404.html"><i class="fa-solid fa-magnifying-glass"></i> Find Jobs</a></li>
+        <li><a href="404.html"><i class="fa-solid fa-building"></i> Companies</a></li>
+        <li><a href="404.html"><i class="fa-solid fa-layer-group"></i> Categories</a></li>
+        <li><a href="404.html"><i class="fa-solid fa-circle-info"></i> How It Works</a></li>
+        <li><a href="404.html"><i class="fa-solid fa-star"></i> Reviews</a></li>
+      </ul>
+      <div class="mobile-menu-footer">
+        <a href="404.html" class="mob-signin">Sign In</a>
+        <a href="404.html" class="mob-post"><i class="fa-solid fa-plus"></i> Post a Job</a>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+      </div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge"><i class="fa-solid fa-bolt"></i> Over 50,000+ Active Jobs</div>
+          <h1 class="hero-title">Find Your <span class="accent">Dream Job</span><br/>Today</h1>
+          <p class="hero-subtitle">Connect with top employers across every industry. Your next career move starts here.</p>
+
+          <!-- Search Bar -->
+          <div class="search-box">
+            <div class="search-field">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" placeholder="Job title, keyword, or company" />
+            </div>
+            <div class="search-divider"></div>
+            <div class="search-field">
+              <i class="fa-solid fa-location-dot"></i>
+              <input type="text" placeholder="City, state, or remote" />
+            </div>
+            <button class="search-btn">Search Jobs</button>
+          </div>
+
+          <div class="hero-tags">
+            <span>Popular:</span>
+            <a href="404.html">Remote</a>
+            <a href="404.html">Software Engineer</a>
+            <a href="404.html">Marketing</a>
+            <a href="404.html">Design</a>
+            <a href="404.html">Finance</a>
+          </div>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-card">
+            <div class="stat-number">50K+</div>
+            <div class="stat-label">Active Jobs</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">12K+</div>
+            <div class="stat-label">Companies</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">2M+</div>
+            <div class="stat-label">Job Seekers</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">95%</div>
+            <div class="stat-label">Success Rate</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="categories" id="categories">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Explore by Field</div>
+          <h2>Browse <span class="accent">Job Categories</span></h2>
+          <p>Discover opportunities across every industry and profession</p>
+        </div>
+        <div class="categories-grid">
+          <div class="category-card">
+            <div class="cat-icon"><i class="fa-solid fa-code"></i></div>
+            <h3>Technology</h3>
+            <p>8,240 jobs</p>
+          </div>
+          <div class="category-card">
+            <div class="cat-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <h3>Finance</h3>
+            <p>3,150 jobs</p>
+          </div>
+          <div class="category-card">
+            <div class="cat-icon"><i class="fa-solid fa-palette"></i></div>
+            <h3>Design & Creative</h3>
+            <p>2,890 jobs</p>
+          </div>
+          <div class="category-card">
+            <div class="cat-icon"><i class="fa-solid fa-bullhorn"></i></div>
+            <h3>Marketing</h3>
+            <p>4,310 jobs</p>
+          </div>
+          <div class="category-card">
+            <div class="cat-icon"><i class="fa-solid fa-stethoscope"></i></div>
+            <h3>Healthcare</h3>
+            <p>5,670 jobs</p>
+          </div>
+          <div class="category-card">
+            <div class="cat-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+            <h3>Education</h3>
+            <p>1,980 jobs</p>
+          </div>
+          <div class="category-card">
+            <div class="cat-icon"><i class="fa-solid fa-truck"></i></div>
+            <h3>Logistics</h3>
+            <p>2,100 jobs</p>
+          </div>
+          <div class="category-card">
+            <div class="cat-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+            <h3>Legal</h3>
+            <p>1,430 jobs</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED JOBS -->
+    <section class="jobs" id="jobs">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Latest Openings</div>
+          <h2>Featured <span class="accent">Jobs</span></h2>
+          <p>Hand-picked opportunities from top companies hiring right now</p>
+        </div>
+        <div class="jobs-grid">
+
+          <div class="job-card featured">
+            <div class="job-top">
+              <div class="company-logo google"><i class="fa-brands fa-google"></i></div>
+              <span class="job-badge">Featured</span>
+            </div>
+            <h3 class="job-title">Senior Software Engineer</h3>
+            <p class="job-company">Google</p>
+            <div class="job-meta">
+              <span><i class="fa-solid fa-location-dot"></i> Mountain View, CA</span>
+              <span><i class="fa-solid fa-clock"></i> Full-time</span>
+            </div>
+            <div class="job-salary">$180,000 – $240,000/yr</div>
+            <div class="job-tags"><span>Python</span><span>Cloud</span><span>ML</span></div>
+            <a href="404.html" class="btn-apply">Apply Now</a>
+          </div>
+
+          <div class="job-card">
+            <div class="job-top">
+              <div class="company-logo meta"><i class="fa-brands fa-meta"></i></div>
+              <span class="job-badge new">New</span>
+            </div>
+            <h3 class="job-title">Product Designer</h3>
+            <p class="job-company">Meta</p>
+            <div class="job-meta">
+              <span><i class="fa-solid fa-location-dot"></i> Remote</span>
+              <span><i class="fa-solid fa-clock"></i> Full-time</span>
+            </div>
+            <div class="job-salary">$130,000 – $170,000/yr</div>
+            <div class="job-tags"><span>Figma</span><span>UX</span><span>Prototyping</span></div>
+            <a href="404.html" class="btn-apply">Apply Now</a>
+          </div>
+
+          <div class="job-card">
+            <div class="job-top">
+              <div class="company-logo amazon"><i class="fa-brands fa-amazon"></i></div>
+              <span class="job-badge">Hot</span>
+            </div>
+            <h3 class="job-title">Data Scientist</h3>
+            <p class="job-company">Amazon</p>
+            <div class="job-meta">
+              <span><i class="fa-solid fa-location-dot"></i> Seattle, WA</span>
+              <span><i class="fa-solid fa-clock"></i> Full-time</span>
+            </div>
+            <div class="job-salary">$160,000 – $210,000/yr</div>
+            <div class="job-tags"><span>Python</span><span>SQL</span><span>AWS</span></div>
+            <a href="404.html" class="btn-apply">Apply Now</a>
+          </div>
+
+          <div class="job-card">
+            <div class="job-top">
+              <div class="company-logo microsoft"><i class="fa-brands fa-microsoft"></i></div>
+              <span class="job-badge new">New</span>
+            </div>
+            <h3 class="job-title">DevOps Engineer</h3>
+            <p class="job-company">Microsoft</p>
+            <div class="job-meta">
+              <span><i class="fa-solid fa-location-dot"></i> Redmond, WA</span>
+              <span><i class="fa-solid fa-clock"></i> Full-time</span>
+            </div>
+            <div class="job-salary">$150,000 – $195,000/yr</div>
+            <div class="job-tags"><span>Azure</span><span>CI/CD</span><span>Kubernetes</span></div>
+            <a href="404.html" class="btn-apply">Apply Now</a>
+          </div>
+
+          <div class="job-card">
+            <div class="job-top">
+              <div class="company-logo apple"><i class="fa-brands fa-apple"></i></div>
+              <span class="job-badge">Featured</span>
+            </div>
+            <h3 class="job-title">iOS Developer</h3>
+            <p class="job-company">Apple</p>
+            <div class="job-meta">
+              <span><i class="fa-solid fa-location-dot"></i> Cupertino, CA</span>
+              <span><i class="fa-solid fa-clock"></i> Full-time</span>
+            </div>
+            <div class="job-salary">$170,000 – $220,000/yr</div>
+            <div class="job-tags"><span>Swift</span><span>Xcode</span><span>UIKit</span></div>
+            <a href="404.html" class="btn-apply">Apply Now</a>
+          </div>
+
+          <div class="job-card">
+            <div class="job-top">
+              <div class="company-logo netflix"><i class="fa-brands fa-youtube"></i></div>
+              <span class="job-badge new">New</span>
+            </div>
+            <h3 class="job-title">Content Marketing Manager</h3>
+            <p class="job-company">Netflix</p>
+            <div class="job-meta">
+              <span><i class="fa-solid fa-location-dot"></i> Los Angeles, CA</span>
+              <span><i class="fa-solid fa-clock"></i> Full-time</span>
+            </div>
+            <div class="job-salary">$110,000 – $145,000/yr</div>
+            <div class="job-tags"><span>SEO</span><span>Content</span><span>Analytics</span></div>
+            <a href="404.html" class="btn-apply">Apply Now</a>
+          </div>
+
+        </div>
+        <div class="view-all-wrap">
+          <a href="404.html" class="btn-outline-lg">View All 50,000+ Jobs <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-it-works" id="how-it-works">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Simple Process</div>
+          <h2>How <span class="accent">JobPortal</span> Works</h2>
+          <p>Get hired in three simple steps</p>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">01</div>
+            <div class="step-icon"><i class="fa-solid fa-user-plus"></i></div>
+            <h3>Create Your Profile</h3>
+            <p>Sign up and build a compelling profile showcasing your skills, experience, and career goals. Upload your resume in seconds.</p>
+          </div>
+          <div class="step-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          <div class="step-card">
+            <div class="step-number">02</div>
+            <div class="step-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <h3>Discover Opportunities</h3>
+            <p>Browse thousands of curated job listings. Use smart filters to find roles that match your skills, location, and salary expectations.</p>
+          </div>
+          <div class="step-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          <div class="step-card">
+            <div class="step-number">03</div>
+            <div class="step-icon"><i class="fa-solid fa-paper-plane"></i></div>
+            <h3>Apply & Get Hired</h3>
+            <p>Apply with one click using your JobPortal profile. Track your applications and receive real-time updates from employers.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOP COMPANIES -->
+    <section class="companies" id="companies">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Top Employers</div>
+          <h2>Companies <span class="accent">Hiring Now</span></h2>
+          <p>Join thousands of professionals who found jobs at these leading companies</p>
+        </div>
+        <div class="companies-grid">
+          <div class="company-card">
+            <div class="co-logo google"><i class="fa-brands fa-google"></i></div>
+            <h4>Google</h4>
+            <p>342 open roles</p>
+            <a href="404.html">View Jobs</a>
+          </div>
+          <div class="company-card">
+            <div class="co-logo meta"><i class="fa-brands fa-meta"></i></div>
+            <h4>Meta</h4>
+            <p>218 open roles</p>
+            <a href="404.html">View Jobs</a>
+          </div>
+          <div class="company-card">
+            <div class="co-logo amazon"><i class="fa-brands fa-amazon"></i></div>
+            <h4>Amazon</h4>
+            <p>891 open roles</p>
+            <a href="404.html">View Jobs</a>
+          </div>
+          <div class="company-card">
+            <div class="co-logo microsoft"><i class="fa-brands fa-microsoft"></i></div>
+            <h4>Microsoft</h4>
+            <p>467 open roles</p>
+            <a href="404.html">View Jobs</a>
+          </div>
+          <div class="company-card">
+            <div class="co-logo apple"><i class="fa-brands fa-apple"></i></div>
+            <h4>Apple</h4>
+            <p>295 open roles</p>
+            <a href="404.html">View Jobs</a>
+          </div>
+          <div class="company-card">
+            <div class="co-logo slack"><i class="fa-brands fa-slack"></i></div>
+            <h4>Slack</h4>
+            <p>134 open roles</p>
+            <a href="404.html">View Jobs</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Success Stories</div>
+          <h2>What Our <span class="accent">Users Say</span></h2>
+          <p>Real people, real results</p>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>"I landed my dream job at a Fortune 500 company within 3 weeks of joining JobPortal. The job matching algorithm is incredibly accurate!"</p>
+            <div class="testimonial-author">
+              <div class="author-avatar av1">A</div>
+              <div>
+                <strong>Arjun Mehta</strong>
+                <span>Software Engineer at Google</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card featured-testimonial">
+            <div class="stars">★★★★★</div>
+            <p>"As a recruiter, JobPortal has completely transformed how we hire. We found 5 exceptional candidates in a single week. The quality of applicants is unmatched."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar av2">S</div>
+              <div>
+                <strong>Sarah Collins</strong>
+                <span>HR Director at Microsoft</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>"After 6 months of job hunting, JobPortal helped me find a remote position that doubled my salary. I can't recommend it enough!"</p>
+            <div class="testimonial-author">
+              <div class="author-avatar av3">R</div>
+              <div>
+                <strong>Riya Sharma</strong>
+                <span>Product Designer at Figma</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-box">
+          <div class="cta-text">
+            <h2>Ready to Find Your <span class="accent">Dream Job?</span></h2>
+            <p>Join over 2 million professionals who have already found their perfect role through JobPortal.</p>
+          </div>
+          <div class="cta-actions">
+            <a href="404.html" class="btn-primary-lg">Get Started Free</a>
+            <a href="404.html" class="btn-outline-lg white">Post a Job</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a href="index.html" class="footer-logo-link">
+              <img src="assets/images/logo.webp" alt="JobPortal" class="footer-logo-img" />
+            </a>
+            <p>Connecting talent with opportunity. Your next career move starts here.</p>
+            <div class="social-links">
+              <a href="404.html"><i class="fa-brands fa-twitter"></i></a>
+              <a href="404.html"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="404.html"><i class="fa-brands fa-instagram"></i></a>
+              <a href="404.html"><i class="fa-brands fa-facebook"></i></a>
+            </div>
+          </div>
+          <div class="footer-links">
+            <div class="footer-col">
+              <h5>For Job Seekers</h5>
+              <ul>
+                <li><a href="404.html">Browse Jobs</a></li>
+                <li><a href="404.html">Create Profile</a></li>
+                <li><a href="404.html">Career Resources</a></li>
+                <li><a href="404.html">Salary Guide</a></li>
+                <li><a href="404.html">Resume Tips</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h5>For Employers</h5>
+              <ul>
+                <li><a href="404.html">Post a Job</a></li>
+                <li><a href="404.html">Search Candidates</a></li>
+                <li><a href="404.html">Pricing Plans</a></li>
+                <li><a href="404.html">Employer Branding</a></li>
+                <li><a href="404.html">Recruitment Solutions</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h5>Company</h5>
+              <ul>
+                <li><a href="404.html">About Us</a></li>
+                <li><a href="404.html">Blog</a></li>
+                <li><a href="404.html">Careers</a></li>
+                <li><a href="404.html">Press</a></li>
+                <li><a href="404.html">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 JobPortal. All rights reserved.</p>
+          <div class="footer-legal">
+            <a href="404.html">Privacy Policy</a>
+            <a href="404.html">Terms of Service</a>
+            <a href="404.html">Cookie Policy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- /main-site -->
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
