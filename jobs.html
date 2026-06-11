@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1,474+ Urgent Job Openings | Stackly</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .page-wrapper { padding-top: 80px; min-height: 100vh; }
+    .page-hero { background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%); padding: 60px 0 40px; border-bottom: 1px solid var(--border); }
+    .page-hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px,5vw,42px); font-weight: 700; color:#fff; margin-bottom: 12px; }
+    .page-hero p { color: var(--text-muted); font-size: 16px; }
+    .search-bar-full { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+    .search-bar-full input, .search-bar-full select { flex: 1; min-width: 160px; padding: 13px 16px; background: rgba(255,255,255,0.06); border: 1px solid var(--border); border-radius: 12px; color: var(--text); font-size: 15px; font-family: 'Inter', sans-serif; outline: none; transition: border-color 0.2s; }
+    .search-bar-full input:focus, .search-bar-full select:focus { border-color: var(--primary); }
+    .search-bar-full input::placeholder { color: var(--text-muted); }
+    .search-bar-full select option { background: #1e293b; }
+    .search-bar-full button { padding: 13px 28px; background: var(--gradient); border: none; border-radius: 12px; color: #fff; font-size: 15px; font-weight: 700; font-family: 'Inter', sans-serif; cursor: pointer; white-space: nowrap; box-shadow: 0 6px 20px rgba(14,165,233,0.35); transition: all 0.2s; }
+    .search-bar-full button:hover { opacity: 0.9; transform: translateY(-1px); }
+    .jobs-layout { display: grid; grid-template-columns: 260px 1fr; gap: 28px; padding: 40px 0 80px; align-items: start; }
+    @media(max-width:768px){ .jobs-layout { grid-template-columns: 1fr; } .sidebar { display: none; } }
+    .sidebar { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 24px; position: sticky; top: 90px; }
+    .sidebar h4 { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .filter-group { margin-bottom: 24px; }
+    .filter-group label { display: block; font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .filter-check { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 14px; color: var(--text); cursor: pointer; }
+    .filter-check input { accent-color: var(--primary); width: 16px; height: 16px; }
+    .filter-check span { flex: 1; }
+    .filter-check small { color: var(--text-muted); font-size: 12px; }
+    .btn-filter { width: 100%; padding: 12px; background: var(--gradient); border: none; border-radius: 10px; color: #fff; font-size: 14px; font-weight: 700; font-family: 'Inter', sans-serif; cursor: pointer; margin-top: 8px; }
+    .jobs-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
+    .results-count { color: var(--text-muted); font-size: 14px; }
+    .results-count strong { color: var(--text); }
+    .sort-select { padding: 9px 14px; background: rgba(255,255,255,0.06); border: 1px solid var(--border); border-radius: 10px; color: var(--text); font-size: 14px; font-family: 'Inter', sans-serif; outline: none; }
+    .sort-select option { background: #1e293b; }
+    .job-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-bottom: 16px; transition: all 0.2s; }
+    .job-card:hover { border-color: rgba(14,165,233,0.4); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+    .jc-top { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 14px; }
+    .jc-logo { width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+    .jc-logo.it { background: rgba(14,165,233,0.15); color: #0ea5e9; }
+    .jc-logo.mfg { background: rgba(255,153,0,0.15); color: #FF9900; }
+    .jc-logo.bpo { background: rgba(16,185,129,0.15); color: #10B981; }
+    .jc-logo.health { background: rgba(239,68,68,0.15); color: #EF4444; }
+    .jc-logo.finance { background: rgba(139,92,246,0.15); color: #8B5CF6; }
+    .jc-logo.textile { background: rgba(234,179,8,0.15); color: #EAB308; }
+    .jc-info { flex: 1; }
+    .jc-info h3 { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .jc-info p { color: var(--text-muted); font-size: 14px; }
+    .jc-badge { padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; background: rgba(14,165,233,0.15); color: var(--primary); flex-shrink: 0; }
+    .jc-badge.new-badge { background: rgba(16,185,129,0.15); color: #10B981; }
+    .jc-badge.urgent { background: rgba(239,68,68,0.15); color: #EF4444; }
+    .jc-meta { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
+    .jc-meta span { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); }
+    .jc-meta span i { color: var(--primary); font-size: 12px; }
+    .jc-salary { font-size: 16px; font-weight: 700; color: var(--primary); margin-bottom: 12px; }
+    .jc-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .jc-tags span { padding: 5px 12px; background: rgba(255,255,255,0.06); border: 1px solid var(--border); border-radius: 8px; font-size: 13px; color: var(--text-muted); }
+    .jc-actions { display: flex; gap: 10px; align-items: center; }
+    .btn-apply-now { padding: 10px 24px; background: var(--gradient); border: none; border-radius: 10px; color: #fff; font-size: 14px; font-weight: 700; font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    .btn-apply-now:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-save { padding: 10px 18px; background: transparent; border: 1px solid var(--border); border-radius: 10px; color: var(--text-muted); font-size: 14px; cursor: pointer; transition: all 0.2s; font-family: 'Inter', sans-serif; }
+    .btn-save:hover { border-color: var(--primary); color: var(--primary); }
+    .time-ago { margin-left: auto; font-size: 12px; color: var(--text-muted); }
+    .pagination { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 32px; }
+    .pg-btn { width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--border); background: transparent; color: var(--text-muted); cursor: pointer; font-family: 'Inter', sans-serif; font-size: 14px; transition: all 0.2s; }
+    .pg-btn:hover, .pg-btn.active { background: var(--gradient); color: #fff; border-color: transparent; }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><img src="assets/images/logo.webp" alt="Stackly" class="nav-logo-img" /></a>
+      <ul class="nav-links">
+        <li><a href="jobs.html" style="color:var(--primary)">Find Jobs</a></li>
+        <li><a href="companies.html">Companies</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="index.html#how-it-works">How It Works</a></li>
+        <li><a href="index.html#testimonials">Reviews</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="signin.html" class="btn-outline">Sign In</a>
+        <a href="post-job.html" class="btn-primary">Post a Job</a>
+      </div>
+      <button class="hamburger" onclick="var m=document.getElementById('mobileMenu'); m.classList.add('open'); document.body.style.overflow='hidden';">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <a href="index.html" class="mob-logo">
+        <img src="assets/images/logo.webp" alt="Stackly" />
+      </a>
+      <button class="mobile-menu-close" onclick="this.closest('.mobile-menu').classList.remove('open'); document.body.style.overflow='';">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <ul>
+      <li><a href="jobs.html"><i class="fa-solid fa-magnifying-glass"></i> Find Jobs</a></li>
+      <li><a href="companies.html"><i class="fa-solid fa-building"></i> Companies</a></li>
+      <li><a href="categories.html"><i class="fa-solid fa-layer-group"></i> Categories</a></li>
+      <li><a href="index.html#how-it-works"><i class="fa-solid fa-circle-info"></i> How It Works</a></li>
+      <li><a href="index.html#testimonials"><i class="fa-solid fa-star"></i> Reviews</a></li>
+    </ul>
+        <div class="mobile-menu-footer">
+      <a href="signin.html" class="mob-signin"><i class="fa-solid fa-right-to-bracket"></i> Sign In</a>
+      <a href="register.html" class="mob-signup"><i class="fa-solid fa-user-plus"></i> Sign Up</a>
+      <a href="post-job.html" class="mob-post"><i class="fa-solid fa-plus"></i> Post a Job</a>
+      <button class="mob-logout" onclick="localStorage.removeItem('stackly_user_name'); window.location.href='index.html';"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+    </div>
+  </div>
+
+  <div class="page-wrapper">
+    <div class="page-hero">
+      <div class="container">
+        <h1>Jobs on <span class="accent">Stackly</span></h1>
+        <p>Browse 1,474+ urgent openings from top companies across India</p>
+        <div class="search-bar-full">
+          <input type="text" placeholder="Job title, keyword, or company" id="searchInput" />
+          <input type="text" placeholder="Coimbatore, Tirupur, Erode..." />
+          <select>
+            <option value="">All Job Types</option>
+            <option>Full-time</option><option>Part-time</option><option>Contract</option><option>Walk-in</option><option>Internship / Fresher</option>
+          </select>
+          <button onclick="filterJobs()"><i class="fa-solid fa-magnifying-glass"></i> Search Jobs</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="jobs-layout">
+        <aside class="sidebar">
+          <h4><i class="fa-solid fa-sliders"></i> Filters</h4>
+          <div class="filter-group">
+            <label>Job Type</label>
+            <label class="filter-check"><input type="checkbox" checked /><span>Full-time</span><small>820</small></label>
+            <label class="filter-check"><input type="checkbox" /><span>Part-time</span><small>112</small></label>
+            <label class="filter-check"><input type="checkbox" /><span>Walk-in</span><small>245</small></label>
+            <label class="filter-check"><input type="checkbox" /><span>Fresher / Trainee</span><small>198</small></label>
+            <label class="filter-check"><input type="checkbox" /><span>Contract</span><small>99</small></label>
+          </div>
+          <div class="filter-group">
+            <label>Experience</label>
+            <label class="filter-check"><input type="checkbox" /><span>Fresher (0 yrs)</span><small>198</small></label>
+            <label class="filter-check"><input type="checkbox" checked /><span>1–3 years</span><small>440</small></label>
+            <label class="filter-check"><input type="checkbox" /><span>3–7 years</span><small>512</small></label>
+            <label class="filter-check"><input type="checkbox" /><span>7+ years</span><small>324</small></label>
+          </div>
+          <div class="filter-group">
+            <label>Salary Range</label>
+            <label class="filter-check"><input type="checkbox" /><span>Below ₹2L/yr</span></label>
+            <label class="filter-check"><input type="checkbox" checked /><span>₹2L – ₹5L/yr</span></label>
+            <label class="filter-check"><input type="checkbox" /><span>₹5L – ₹10L/yr</span></label>
+            <label class="filter-check"><input type="checkbox" /><span>Above ₹10L/yr</span></label>
+          </div>
+          <div class="filter-group">
+            <label>Date Posted</label>
+            <label class="filter-check"><input type="checkbox" /><span>Last 24 hours</span></label>
+            <label class="filter-check"><input type="checkbox" checked /><span>Last 7 days</span></label>
+            <label class="filter-check"><input type="checkbox" /><span>Last 30 days</span></label>
+            <label class="filter-check"><input type="checkbox" /><span>Any time</span></label>
+          </div>
+          <button class="btn-filter">Apply Filters</button>
+        </aside>
+
+        <main class="jobs-main">
+          <div class="jobs-top">
+            <p class="results-count">Showing <strong>1,474+</strong> jobs on Stackly</p>
+            <select class="sort-select">
+              <option>Most Relevant</option><option>Newest First</option><option>Highest Salary</option><option>Most Applied</option>
+            </select>
+          </div>
+
+          <div id="jobsList">
+
+            <div class="job-card">
+              <div class="jc-top">
+                <div class="jc-logo it"><i class="fa-solid fa-laptop-code"></i></div>
+                <div class="jc-info"><h3>Software Developer (Java / React)</h3><p>LG Soft India · Peelamedu, Coimbatore</p></div>
+                <span class="jc-badge urgent">Urgent</span>
+              </div>
+              <div class="jc-meta">
+                <span><i class="fa-solid fa-location-dot"></i> Peelamedu, Coimbatore</span>
+                <span><i class="fa-solid fa-clock"></i> Full-time</span>
+                <span><i class="fa-solid fa-briefcase"></i> 2–5 yrs</span>
+              </div>
+              <div class="jc-salary">₹4,00,000 – ₹8,00,000/yr</div>
+              <div class="jc-tags"><span>Java</span><span>React</span><span>MySQL</span><span>Spring Boot</span></div>
+              <div class="jc-actions">
+                <a href="apply.html" class="btn-apply-now">Apply Now</a>
+                <button class="btn-save"><i class="fa-regular fa-bookmark"></i> Save</button>
+                <span class="time-ago">1 day ago</span>
+              </div>
+            </div>
+
+            <div class="job-card">
+              <div class="jc-top">
+                <div class="jc-logo bpo"><i class="fa-solid fa-headset"></i></div>
+                <div class="jc-info"><h3>Customer Support Executive</h3><p>Wipro BPS · RS Puram, Coimbatore</p></div>
+                <span class="jc-badge new-badge">New</span>
+              </div>
+              <div class="jc-meta">
+                <span><i class="fa-solid fa-location-dot"></i> RS Puram, Coimbatore</span>
+                <span><i class="fa-solid fa-clock"></i> Full-time</span>
+                <span><i class="fa-solid fa-briefcase"></i> 0–2 yrs</span>
+              </div>
+              <div class="jc-salary">₹2,40,000 – ₹3,60,000/yr</div>
+              <div class="jc-tags"><span>English</span><span>Tamil</span><span>Voice Process</span></div>
+              <div class="jc-actions">
+                <a href="apply.html" class="btn-apply-now">Apply Now</a>
+                <button class="btn-save"><i class="fa-regular fa-bookmark"></i> Save</button>
+                <span class="time-ago">2 days ago</span>
+              </div>
+            </div>
+
+            <div class="job-card">
+              <div class="jc-top">
+                <div class="jc-logo mfg"><i class="fa-solid fa-gears"></i></div>
+                <div class="jc-info"><h3>Mechanical Design Engineer</h3><p>Roots Industries India Ltd · SIPCOT, Coimbatore</p></div>
+                <span class="jc-badge">Hot</span>
+              </div>
+              <div class="jc-meta">
+                <span><i class="fa-solid fa-location-dot"></i> SIPCOT, Coimbatore</span>
+                <span><i class="fa-solid fa-clock"></i> Full-time</span>
+                <span><i class="fa-solid fa-briefcase"></i> 3–6 yrs</span>
+              </div>
+              <div class="jc-salary">₹3,50,000 – ₹6,00,000/yr</div>
+              <div class="jc-tags"><span>AutoCAD</span><span>SolidWorks</span><span>CNC</span><span>CATIA</span></div>
+              <div class="jc-actions">
+                <a href="apply.html" class="btn-apply-now">Apply Now</a>
+                <button class="btn-save"><i class="fa-regular fa-bookmark"></i> Save</button>
+                <span class="time-ago">3 days ago</span>
+              </div>
+            </div>
+
+            <div class="job-card">
+              <div class="jc-top">
+                <div class="jc-logo finance"><i class="fa-solid fa-calculator"></i></div>
+                <div class="jc-info"><h3>Senior Accounts Manager</h3><p>TVS Group · Avinashi Road, Coimbatore</p></div>
+                <span class="jc-badge new-badge">New</span>
+              </div>
+              <div class="jc-meta">
+                <span><i class="fa-solid fa-location-dot"></i> Avinashi Road, Coimbatore</span>
+                <span><i class="fa-solid fa-clock"></i> Full-time</span>
+                <span><i class="fa-solid fa-briefcase"></i> 5–10 yrs</span>
+              </div>
+              <div class="jc-salary">₹5,00,000 – ₹9,00,000/yr</div>
+              <div class="jc-tags"><span>Tally</span><span>GST Filing</span><span>SAP</span><span>Audit</span></div>
+              <div class="jc-actions">
+                <a href="apply.html" class="btn-apply-now">Apply Now</a>
+                <button class="btn-save"><i class="fa-regular fa-bookmark"></i> Save</button>
+                <span class="time-ago">5 days ago</span>
+              </div>
+            </div>
+
+            <div class="job-card">
+              <div class="jc-top">
+                <div class="jc-logo health"><i class="fa-solid fa-stethoscope"></i></div>
+                <div class="jc-info"><h3>Staff Nurse (ICU / General Ward)</h3><p>KG Hospital · Avanashi Road, Coimbatore</p></div>
+                <span class="jc-badge urgent">Urgent</span>
+              </div>
+              <div class="jc-meta">
+                <span><i class="fa-solid fa-location-dot"></i> Avanashi Road, Coimbatore</span>
+                <span><i class="fa-solid fa-clock"></i> Full-time</span>
+                <span><i class="fa-solid fa-briefcase"></i> 1–4 yrs</span>
+              </div>
+              <div class="jc-salary">₹2,80,000 – ₹4,50,000/yr</div>
+              <div class="jc-tags"><span>B.Sc Nursing</span><span>ICU Care</span><span>Emergency</span></div>
+              <div class="jc-actions">
+                <a href="apply.html" class="btn-apply-now">Apply Now</a>
+                <button class="btn-save"><i class="fa-regular fa-bookmark"></i> Save</button>
+                <span class="time-ago">1 week ago</span>
+              </div>
+            </div>
+
+            <div class="job-card">
+              <div class="jc-top">
+                <div class="jc-logo textile"><i class="fa-solid fa-shirt"></i></div>
+                <div class="jc-info"><h3>Production Supervisor – Knitting</h3><p>Tirupur Knits Ltd · Tirupur</p></div>
+                <span class="jc-badge new-badge">New</span>
+              </div>
+              <div class="jc-meta">
+                <span><i class="fa-solid fa-location-dot"></i> Tirupur (30 km from Coimbatore)</span>
+                <span><i class="fa-solid fa-clock"></i> Full-time</span>
+                <span><i class="fa-solid fa-briefcase"></i> 3–8 yrs</span>
+              </div>
+              <div class="jc-salary">₹3,00,000 – ₹5,00,000/yr</div>
+              <div class="jc-tags"><span>Textile</span><span>Knitting</span><span>Quality Control</span></div>
+              <div class="jc-actions">
+                <a href="apply.html" class="btn-apply-now">Apply Now</a>
+                <button class="btn-save"><i class="fa-regular fa-bookmark"></i> Save</button>
+                <span class="time-ago">2 days ago</span>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="pagination">
+            <button class="pg-btn active">1</button>
+            <button class="pg-btn">2</button>
+            <button class="pg-btn">3</button>
+            <button class="pg-btn">...</button>
+            <button class="pg-btn">24</button>
+            <button class="pg-btn"><i class="fa-solid fa-angle-right"></i></button>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('scroll', function() {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+    });
+    function filterJobs() {
+      const q = document.getElementById('searchInput').value.toLowerCase();
+      document.querySelectorAll('.job-card').forEach(card => {
+        card.style.display = card.textContent.toLowerCase().includes(q) ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
