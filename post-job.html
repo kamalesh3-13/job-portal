@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post a Job | Stackly</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .page-wrapper { padding-top: 80px; min-height: 100vh; }
+    .page-hero { background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%); padding: 60px 0 40px; border-bottom: 1px solid var(--border); }
+    .page-hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px,5vw,42px); font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .page-hero p { color: var(--text-muted); font-size: 16px; }
+    .hero-badges { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 20px; }
+    .hero-badge-item { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-muted); }
+    .hero-badge-item i { color: var(--primary); }
+
+    .post-job-section { padding: 60px 0 80px; }
+    .post-layout { display: grid; grid-template-columns: 1fr 360px; gap: 32px; align-items: start; }
+    @media(max-width:900px){ .post-layout { grid-template-columns: 1fr; } .post-sidebar { order: -1; } }
+
+    .post-form-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 40px; }
+    .form-section { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+    .form-section:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .form-section-title { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    .form-section-title i { color: var(--primary); }
+
+    .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media(max-width:600px){ .form-grid-2 { grid-template-columns: 1fr; } }
+
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+    .form-group label span { color: #EF4444; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 13px 16px;
+      background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+      border-radius: 12px; color: var(--text); font-size: 15px;
+      font-family: 'Inter', sans-serif; transition: border-color 0.2s; outline: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--primary); background: rgba(14,165,233,0.06); }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: var(--text-muted); }
+    .form-group select option { background: #1e293b; }
+    .form-group textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+
+    .salary-row { display: grid; grid-template-columns: 1fr 1fr 120px; gap: 12px; }
+    @media(max-width:600px){ .salary-row { grid-template-columns: 1fr 1fr; } }
+
+    .skills-input-wrap { display: flex; gap: 10px; }
+    .skills-input-wrap input { flex: 1; }
+    .skills-input-wrap button { padding: 13px 18px; background: var(--gradient); border: none; border-radius: 12px; color: #fff; font-weight: 700; cursor: pointer; font-family: 'Inter', sans-serif; white-space: nowrap; }
+    .skills-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+    .skill-chip { display: flex; align-items: center; gap: 6px; padding: 6px 12px; background: rgba(14,165,233,0.12); border: 1px solid rgba(14,165,233,0.3); border-radius: 8px; font-size: 13px; color: var(--primary); }
+    .skill-chip button { background: none; border: none; cursor: pointer; color: var(--primary); padding: 0; font-size: 12px; }
+
+    .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-bottom: 8px; }
+    @media(max-width:600px){ .pricing-grid { grid-template-columns: 1fr; } }
+    .plan-card { border: 2px solid var(--border); border-radius: 14px; padding: 20px; cursor: pointer; transition: all 0.2s; }
+    .plan-card:hover { border-color: rgba(14,165,233,0.4); }
+    .plan-card.selected { border-color: var(--primary); background: rgba(14,165,233,0.07); }
+    .plan-card h5 { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .plan-card .plan-price { font-size: 22px; font-weight: 800; color: var(--primary); margin-bottom: 8px; }
+    .plan-card p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+    .plan-card .popular-badge { background: var(--gradient); color: #fff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 6px; display: inline-block; margin-bottom: 8px; }
+
+    .btn-submit { width: 100%; padding: 16px; background: var(--gradient); border: none; border-radius: 14px; color: #fff; font-size: 17px; font-weight: 700; font-family: 'Inter', sans-serif; cursor: pointer; box-shadow: 0 8px 28px rgba(14,165,233,0.4); transition: all 0.2s; margin-top: 8px; }
+    .btn-submit:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    .post-sidebar {}
+    .sidebar-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-bottom: 20px; }
+    .sidebar-card h4 { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 16px; }
+    .tip-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+    .tip-item i { color: var(--primary); margin-top: 2px; flex-shrink: 0; }
+    .stat-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .stat-row:last-child { border-bottom: none; }
+    .stat-row span:first-child { color: var(--text-muted); font-size: 14px; }
+    .stat-row strong { color: #fff; font-size: 15px; }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><img src="assets/images/logo.webp" alt="Stackly" class="nav-logo-img" /></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="jobs.html">Find Jobs</a></li>
+        <li><a href="companies.html">Companies</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="signin.html" class="btn-outline">Sign In</a>
+        <a href="post-job.html" class="btn-primary" style="background:var(--gradient)">Post a Job</a>
+      </div>
+      <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open'); document.body.style.overflow='hidden';">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <a href="index.html" class="mob-logo">
+        <img src="assets/images/logo.webp" alt="Stackly" />
+      </a>
+      <button class="mobile-menu-close" onclick="this.closest('.mobile-menu').classList.remove('open'); document.body.style.overflow='';">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <ul>
+      <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+      <li><a href="jobs.html"><i class="fa-solid fa-magnifying-glass"></i> Find Jobs</a></li>
+      <li><a href="companies.html"><i class="fa-solid fa-building"></i> Companies</a></li>
+      <li><a href="categories.html"><i class="fa-solid fa-layer-group"></i> Categories</a></li>
+      <li><a href="about.html"><i class="fa-solid fa-info-circle"></i> About</a></li>
+      <li><a href="services.html"><i class="fa-solid fa-briefcase"></i> Services</a></li>
+      <li><a href="blog.html"><i class="fa-solid fa-newspaper"></i> Blog</a></li>
+      <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+      <li><a href="index.html#how-it-works"><i class="fa-solid fa-circle-info"></i> How It Works</a></li>
+      <li><a href="index.html#testimonials"><i class="fa-solid fa-star"></i> Reviews</a></li>
+    </ul>
+        <div class="mobile-menu-footer">
+      <a href="signin.html" class="mob-signin"><i class="fa-solid fa-right-to-bracket"></i> Sign In</a>
+      <a href="register.html" class="mob-signup"><i class="fa-solid fa-user-plus"></i> Sign Up</a>
+      <a href="post-job.html" class="mob-post"><i class="fa-solid fa-plus"></i> Post a Job</a>
+      <button class="mob-logout" onclick="localStorage.removeItem('stackly_user_name'); window.location.href='index.html';"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+    </div>
+  </div>
+
+  <div class="page-wrapper">
+    <div class="page-hero">
+      <div class="container">
+        <h1>Post a <span class="accent">Job</span></h1>
+        <p>Reach 2 million+ qualified candidates in minutes</p>
+        <div class="hero-badges">
+          <span class="hero-badge-item"><i class="fa-solid fa-bolt"></i> Go live in under 10 minutes</span>
+          <span class="hero-badge-item"><i class="fa-solid fa-users"></i> 2M+ active job seekers</span>
+          <span class="hero-badge-item"><i class="fa-solid fa-chart-bar"></i> Real-time application tracking</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="post-job-section">
+      <div class="container">
+        <div class="post-layout">
+          <div class="post-form-card">
+
+            <div class="form-section">
+              <h3 class="form-section-title"><i class="fa-solid fa-briefcase"></i> Job Details</h3>
+              <div class="form-group">
+                <label>Job Title <span>*</span></label>
+                <input type="text" placeholder="e.g. Senior Software Engineer" id="jobTitle" />
+              </div>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label>Company Name <span>*</span></label>
+                  <input type="text" placeholder="Your company name" />
+                </div>
+                <div class="form-group">
+                  <label>Department</label>
+                  <input type="text" placeholder="e.g. Engineering" />
+                </div>
+              </div>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label>Job Category <span>*</span></label>
+                  <select>
+                    <option>Select category</option>
+                    <option>Technology</option><option>Finance</option><option>Healthcare</option>
+                    <option>Design & Creative</option><option>Marketing</option><option>Education</option>
+                    <option>Logistics</option><option>Legal</option><option>Sales</option><option>HR</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Job Type <span>*</span></label>
+                  <select>
+                    <option>Full-time</option><option>Part-time</option><option>Contract</option>
+                    <option>Remote</option><option>Internship</option><option>Freelance</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Location <span>*</span></label>
+                <input type="text" placeholder="City, State or 'Remote'" />
+              </div>
+              <div class="form-group">
+                <label>Experience Level</label>
+                <select>
+                  <option>Select level</option>
+                  <option>Entry Level (0–2 yrs)</option><option>Mid Level (3–5 yrs)</option>
+                  <option>Senior Level (6–9 yrs)</option><option>Director+ (10+ yrs)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3 class="form-section-title"><i class="fa-solid fa-dollar-sign"></i> Compensation</h3>
+              <div class="salary-row">
+                <div class="form-group" style="margin-bottom:0">
+                  <label>Min Salary</label>
+                  <input type="number" placeholder="e.g. 80000" />
+                </div>
+                <div class="form-group" style="margin-bottom:0">
+                  <label>Max Salary</label>
+                  <input type="number" placeholder="e.g. 120000" />
+                </div>
+                <div class="form-group" style="margin-bottom:0">
+                  <label>Period</label>
+                  <select><option>Per Year</option><option>Per Month</option><option>Per Hour</option></select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3 class="form-section-title"><i class="fa-solid fa-file-lines"></i> Job Description</h3>
+              <div class="form-group">
+                <label>Description <span>*</span></label>
+                <textarea placeholder="Describe the role, day-to-day responsibilities, team culture, and what success looks like..."></textarea>
+              </div>
+              <div class="form-group">
+                <label>Requirements</label>
+                <textarea placeholder="List the qualifications, skills, and experience required..." style="min-height:100px"></textarea>
+              </div>
+              <div class="form-group">
+                <label>Benefits & Perks</label>
+                <textarea placeholder="Health insurance, 401K, remote work, equity, etc." style="min-height:90px"></textarea>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3 class="form-section-title"><i class="fa-solid fa-tags"></i> Skills & Keywords</h3>
+              <div class="form-group" style="margin-bottom:0">
+                <label>Required Skills</label>
+                <div class="skills-input-wrap">
+                  <input type="text" id="skillInput" placeholder="Type a skill and press Add" />
+                  <button onclick="addSkill()">Add</button>
+                </div>
+                <div class="skills-chips" id="skillsChips">
+                  <div class="skill-chip">JavaScript <button onclick="removeSkill(this)">✕</button></div>
+                  <div class="skill-chip">React <button onclick="removeSkill(this)">✕</button></div>
+                  <div class="skill-chip">Node.js <button onclick="removeSkill(this)">✕</button></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3 class="form-section-title"><i class="fa-solid fa-crown"></i> Choose Your Plan</h3>
+              <div class="pricing-grid">
+                <div class="plan-card" onclick="selectPlan(this)">
+                  <h5>Basic</h5>
+                  <div class="plan-price">Free</div>
+                  <p>1 active job post, 30 days, standard listing</p>
+                </div>
+                <div class="plan-card selected" onclick="selectPlan(this)">
+                  <div class="popular-badge">Most Popular</div>
+                  <h5>Pro</h5>
+                  <div class="plan-price">$49</div>
+                  <p>Featured listing, 60 days, priority placement, analytics</p>
+                </div>
+                <div class="plan-card" onclick="selectPlan(this)">
+                  <h5>Enterprise</h5>
+                  <div class="plan-price">$149</div>
+                  <p>Unlimited posts, branded profile, dedicated support</p>
+                </div>
+              </div>
+            </div>
+
+            <button class="btn-submit" onclick="handlePostJob()">
+              <i class="fa-solid fa-paper-plane"></i> Post Job Now
+            </button>
+          </div>
+
+          <aside class="post-sidebar">
+            <div class="sidebar-card">
+              <h4><i class="fa-solid fa-chart-bar" style="color:var(--primary);margin-right:8px"></i> Platform Stats</h4>
+              <div class="stat-row"><span>Active Job Seekers</span><strong>2M+</strong></div>
+              <div class="stat-row"><span>Avg. Applications/Job</span><strong>147</strong></div>
+              <div class="stat-row"><span>Avg. Time to Hire</span><strong>12 days</strong></div>
+              <div class="stat-row"><span>Employer Rating</span><strong>4.8 / 5 ⭐</strong></div>
+            </div>
+
+            <div class="sidebar-card">
+              <h4><i class="fa-solid fa-lightbulb" style="color:var(--primary);margin-right:8px"></i> Posting Tips</h4>
+              <div class="tip-item"><i class="fa-solid fa-check-circle"></i> Use a clear, specific job title for more qualified applicants</div>
+              <div class="tip-item"><i class="fa-solid fa-check-circle"></i> Include salary range — jobs with salary info get 3x more applies</div>
+              <div class="tip-item"><i class="fa-solid fa-check-circle"></i> Describe day-to-day work, not just requirements</div>
+              <div class="tip-item"><i class="fa-solid fa-check-circle"></i> Highlight unique perks and your company culture</div>
+              <div class="tip-item"><i class="fa-solid fa-check-circle"></i> Keep requirements realistic — avoid wishlists</div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const name = localStorage.getItem('stackly_user_name');
+      const signin = document.querySelector('.nav-actions a[href="signin.html"]');
+      const mobSignin = document.querySelector('.mob-signin');
+      const mobSignup = document.querySelector('.mob-signup');
+      const mobLogout = document.querySelector('.mob-logout');
+      if (name) {
+        if (signin) { signin.textContent = 'Hi, ' + name; signin.href = 'welcome.html'; }
+        if (mobSignin) mobSignin.style.display = 'none';
+        if (mobSignup) mobSignup.style.display = 'none';
+      } else if (mobLogout) {
+        mobLogout.style.display = 'none';
+      }
+    })();
+
+    window.addEventListener('scroll', function() {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    function addSkill() {
+      const input = document.getElementById('skillInput');
+      const val = input.value.trim();
+      if (!val) return;
+      const chip = document.createElement('div');
+      chip.className = 'skill-chip';
+      chip.innerHTML = val + ' <button onclick="removeSkill(this)">✕</button>';
+      document.getElementById('skillsChips').appendChild(chip);
+      input.value = '';
+    }
+    document.getElementById('skillInput').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') { e.preventDefault(); addSkill(); }
+    });
+
+    function removeSkill(btn) { btn.closest('.skill-chip').remove(); }
+
+    function selectPlan(card) {
+      document.querySelectorAll('.plan-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+    }
+
+    function handlePostJob() {
+      const title = document.getElementById('jobTitle').value;
+      if (!title) { alert('Please enter a job title.'); return; }
+      alert('Your job "' + title + '" has been posted successfully! Candidates will start applying shortly.');
+    }
+  </script>
+</body>
+</html>

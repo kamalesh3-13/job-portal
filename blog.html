@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Blog | Stackly — Job Search Tips & Insights</title>
+  <meta name="description" content="Expert career advice, job search tips, resume guides, and hiring insights from Stackly — India's trusted local job portal." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .page-wrapper { padding-top: 80px; min-height: 100vh; }
+    .page-hero { background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%); padding: 60px 0 40px; border-bottom: 1px solid var(--border); text-align: center; }
+    .page-hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px,5vw,42px); font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .page-hero p { color: var(--text-muted); font-size: 16px; max-width: 560px; margin: 0 auto; }
+
+    .section-pad { padding: 80px 0; }
+    .alt-bg { background: rgba(255,255,255,0.01); }
+
+    .featured-article { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; background: var(--card-bg); border: 1px solid var(--border); border-radius: 24px; padding: 36px; margin-bottom: 60px; }
+    @media(max-width:768px){ .featured-article { grid-template-columns: 1fr; padding: 24px; } }
+    .fa-image { background: var(--gradient-soft); border: 1px solid var(--border); border-radius: 16px; padding: 50px 30px; text-align: center; }
+    .fa-image i { font-size: 56px; color: var(--primary); }
+    .fa-content .fa-tag { display: inline-block; padding: 4px 12px; background: rgba(14,165,233,0.1); border: 1px solid rgba(14,165,233,0.25); border-radius: 99px; font-size: 12px; color: var(--primary); font-weight: 600; margin-bottom: 12px; }
+    .fa-content h3 { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .fa-content p { color: var(--text-muted); font-size: 15px; line-height: 1.7; margin-bottom: 16px; }
+    .fa-meta { display: flex; gap: 16px; font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
+    .fa-meta i { color: var(--primary); margin-right: 4px; }
+
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+    .blog-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; transition: all 0.3s; }
+    .blog-card:hover { border-color: rgba(14,165,233,0.4); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+    .blog-thumb { background: var(--gradient-soft); padding: 36px 20px; text-align: center; border-bottom: 1px solid var(--border); }
+    .blog-thumb i { font-size: 40px; color: var(--primary); }
+    .blog-body { padding: 24px; }
+    .blog-tag { display: inline-block; padding: 3px 10px; background: rgba(14,165,233,0.1); border: 1px solid rgba(14,165,233,0.2); border-radius: 99px; font-size: 11px; color: var(--primary); font-weight: 600; margin-bottom: 10px; }
+    .blog-body h4 { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.4; }
+    .blog-body p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; }
+    .blog-meta { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); }
+    .blog-meta i { color: var(--primary); margin-right: 4px; }
+
+    .topics-grid { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 48px; }
+    .topic-chip { padding: 8px 18px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 99px; color: var(--text-muted); font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    .topic-chip:hover, .topic-chip.active { background: var(--gradient); color: #fff; border-color: transparent; }
+    .topic-chip i { margin-right: 6px; }
+
+    .newsletter-box { background: var(--card-bg); border: 1px solid var(--border); border-radius: 24px; padding: 48px 40px; text-align: center; max-width: 640px; margin: 0 auto; }
+    .newsletter-box h3 { font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .newsletter-box p { color: var(--text-muted); font-size: 15px; margin-bottom: 28px; }
+    .newsletter-form { display: flex; gap: 12px; max-width: 480px; margin: 0 auto; }
+    @media(max-width:480px){ .newsletter-form { flex-direction: column; } }
+    .newsletter-form input { flex: 1; padding: 14px 18px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 12px; color: var(--text); font-size: 15px; font-family: 'Inter', sans-serif; outline: none; }
+    .newsletter-form input:focus { border-color: var(--primary); }
+    .newsletter-form input::placeholder { color: var(--text-muted); }
+    .newsletter-form button { padding: 14px 28px; background: var(--gradient); border: none; border-radius: 12px; color: #fff; font-size: 15px; font-weight: 700; font-family: 'Inter', sans-serif; cursor: pointer; white-space: nowrap; box-shadow: 0 6px 20px rgba(14,165,233,0.35); transition: all 0.2s; }
+    .newsletter-form button:hover { opacity: 0.9; }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><img src="assets/images/logo.webp" alt="Stackly" class="nav-logo-img" /></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="jobs.html">Find Jobs</a></li>
+        <li><a href="companies.html">Companies</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="blog.html" style="color:var(--primary)">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="signin.html" class="btn-outline">Sign In</a>
+        <a href="post-job.html" class="btn-primary">Post a Job</a>
+      </div>
+      <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open'); document.body.style.overflow='hidden';">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <a href="index.html" class="mob-logo"><img src="assets/images/logo.webp" alt="Stackly" /></a>
+      <button class="mobile-menu-close" onclick="this.closest('.mobile-menu').classList.remove('open'); document.body.style.overflow='';"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <ul>
+      <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+      <li><a href="jobs.html"><i class="fa-solid fa-magnifying-glass"></i> Find Jobs</a></li>
+      <li><a href="companies.html"><i class="fa-solid fa-building"></i> Companies</a></li>
+      <li><a href="categories.html"><i class="fa-solid fa-layer-group"></i> Categories</a></li>
+      <li><a href="about.html"><i class="fa-solid fa-info-circle"></i> About</a></li>
+      <li><a href="services.html"><i class="fa-solid fa-briefcase"></i> Services</a></li>
+      <li><a href="blog.html"><i class="fa-solid fa-newspaper"></i> Blog</a></li>
+      <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+      <li><a href="index.html#how-it-works"><i class="fa-solid fa-circle-info"></i> How It Works</a></li>
+      <li><a href="index.html#testimonials"><i class="fa-solid fa-star"></i> Reviews</a></li>
+    </ul>
+    <div class="mobile-menu-footer">
+      <a href="signin.html" class="mob-signin"><i class="fa-solid fa-right-to-bracket"></i> Sign In</a>
+      <a href="register.html" class="mob-signup"><i class="fa-solid fa-user-plus"></i> Sign Up</a>
+      <a href="post-job.html" class="mob-post"><i class="fa-solid fa-plus"></i> Post a Job</a>
+      <button class="mob-logout" onclick="localStorage.removeItem('stackly_user_name'); window.location.href='index.html';"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+    </div>
+  </div>
+
+  <div class="page-wrapper">
+    <!-- SECTION 1: HERO -->
+    <div class="page-hero">
+      <div class="container">
+        <h1>Stackly <span class="accent">Blog</span></h1>
+        <p>Career advice, job search tips, resume guides, and hiring insights — curated for Indian job seekers and employers.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 2: TOPICS -->
+    <div class="section-pad" style="padding-bottom:0;">
+      <div class="container">
+        <div class="topics-grid">
+          <a href="#" class="topic-chip active"><i class="fa-solid fa-fire"></i> All</a>
+          <a href="#" class="topic-chip"><i class="fa-solid fa-file-lines"></i> Resume Tips</a>
+          <a href="#" class="topic-chip"><i class="fa-solid fa-circle-check"></i> Interview Prep</a>
+          <a href="#" class="topic-chip"><i class="fa-solid fa-chart-line"></i> Career Growth</a>
+          <a href="#" class="topic-chip"><i class="fa-solid fa-building"></i> Hiring Insights</a>
+          <a href="#" class="topic-chip"><i class="fa-solid fa-graduation-cap"></i> Fresher Guide</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 3: FEATURED ARTICLE -->
+    <div class="section-pad" style="padding-top:40px;">
+      <div class="container">
+        <div class="featured-article">
+          <div class="fa-image">
+            <i class="fa-solid fa-file-pen"></i>
+          </div>
+          <div class="fa-content">
+            <div class="fa-tag">Featured Article</div>
+            <h3>How to Build a Standout Resume in 2026 — Tips for Indian Job Seekers</h3>
+            <p>Your resume is your first impression. Learn how to craft a resume that gets noticed by recruiters at India's top companies. From ATS keywords to formatting best practices.</p>
+            <div class="fa-meta">
+              <span><i class="fa-regular fa-calendar"></i> June 8, 2026</span>
+              <span><i class="fa-regular fa-clock"></i> 8 min read</span>
+            </div>
+            <a href="#" class="btn-primary" style="display:inline-flex;padding:10px 22px;font-size:14px;">Read Article <i class="fa-solid fa-arrow-right" style="margin-left:6px;"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4: ARTICLES GRID -->
+    <div class="section-pad alt-bg">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Latest Posts</div>
+          <h2>Latest from the <span class="accent">Blog</span></h2>
+          <p>Stay updated with the latest career trends and job market insights</p>
+        </div>
+        <div class="blog-grid">
+          <article class="blog-card">
+            <div class="blog-thumb"><i class="fa-solid fa-comments"></i></div>
+            <div class="blog-body">
+              <div class="blog-tag">Interview Prep</div>
+              <h4>Top 10 Interview Questions for IT Jobs in India — And How to Answer Them</h4>
+              <p>Ace your next tech interview with our comprehensive guide to the most common questions asked by Indian IT recruiters.</p>
+              <div class="blog-meta">
+                <span><i class="fa-regular fa-calendar"></i> June 5, 2026</span>
+                <span><i class="fa-regular fa-clock"></i> 6 min read</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="blog-card">
+            <div class="blog-thumb"><i class="fa-solid fa-chart-bar"></i></div>
+            <div class="blog-body">
+              <div class="blog-tag">Career Growth</div>
+              <h4>Highest Paying Jobs in Coimbatore — 2026 Salary Guide</h4>
+              <p>Discover the top-paying roles across IT, manufacturing, healthcare and BPO in Coimbatore's growing job market.</p>
+              <div class="blog-meta">
+                <span><i class="fa-regular fa-calendar"></i> June 1, 2026</span>
+                <span><i class="fa-regular fa-clock"></i> 5 min read</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="blog-card">
+            <div class="blog-thumb"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div class="blog-body">
+              <div class="blog-tag">Fresher Guide</div>
+              <h4>How to Land Your First Job as a Fresher in Tamil Nadu — A Complete Guide</h4>
+              <p>No experience? No problem. Here's your step-by-step roadmap to landing your first job in Tamil Nadu's competitive job market.</p>
+              <div class="blog-meta">
+                <span><i class="fa-regular fa-calendar"></i> May 28, 2026</span>
+                <span><i class="fa-regular fa-clock"></i> 7 min read</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="blog-card">
+            <div class="blog-thumb"><i class="fa-solid fa-building"></i></div>
+            <div class="blog-body">
+              <div class="blog-tag">Hiring Insights</div>
+              <h4>Why Local Job Portals Are Beating National Platforms for Tier-2 Hiring</h4>
+              <p>Employers are shifting to hyper-local platforms. Here's why Stackly delivers better results for companies hiring in Coimbatore and beyond.</p>
+              <div class="blog-meta">
+                <span><i class="fa-regular fa-calendar"></i> May 22, 2026</span>
+                <span><i class="fa-regular fa-clock"></i> 4 min read</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="blog-card">
+            <div class="blog-thumb"><i class="fa-solid fa-file-lines"></i></div>
+            <div class="blog-body">
+              <div class="blog-tag">Resume Tips</div>
+              <h4>ATS-Friendly Resume Template — Get Past the Robots and Into Human Hands</h4>
+              <p>Most Indian companies use ATS software. Learn how to structure your resume so it gets shortlisted by both bots and recruiters.</p>
+              <div class="blog-meta">
+                <span><i class="fa-regular fa-calendar"></i> May 18, 2026</span>
+                <span><i class="fa-regular fa-clock"></i> 6 min read</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="blog-card">
+            <div class="blog-thumb"><i class="fa-solid fa-handshake"></i></div>
+            <div class="blog-body">
+              <div class="blog-tag">Career Growth</div>
+              <h4>How to Switch Careers Successfully — A Guide for Mid-Career Professionals</h4>
+              <p>Thinking of a career change? Learn how to leverage your existing skills and pivot into a new industry with confidence.</p>
+              <div class="blog-meta">
+                <span><i class="fa-regular fa-calendar"></i> May 14, 2026</span>
+                <span><i class="fa-regular fa-clock"></i> 5 min read</span>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div style="text-align:center;margin-top:44px;">
+          <a href="#" class="btn-outline-lg">Load More Articles <i class="fa-solid fa-arrow-down"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 5: NEWSLETTER -->
+    <div class="section-pad">
+      <div class="container">
+        <div class="newsletter-box">
+          <h3>Get Career Tips <span class="accent">Delivered Weekly</span></h3>
+          <p>Join 5,000+ subscribers and receive curated job search advice, market insights, and exclusive job alerts.</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Your email address" />
+            <button onclick="handleSubscribe()">Subscribe <i class="fa-solid fa-paper-plane"></i></button>
+          </div>
+          <p style="font-size:12px;color:var(--text-muted);margin-top:16px;">No spam. Unsubscribe anytime.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const name = localStorage.getItem('stackly_user_name');
+      const signin = document.querySelector('.nav-actions a[href="signin.html"]');
+      const mobSignin = document.querySelector('.mob-signin');
+      const mobSignup = document.querySelector('.mob-signup');
+      const mobLogout = document.querySelector('.mob-logout');
+      if (name) {
+        if (signin) { signin.textContent = 'Hi, ' + name; signin.href = 'welcome.html'; }
+        if (mobSignin) mobSignin.style.display = 'none';
+        if (mobSignup) mobSignup.style.display = 'none';
+      } else if (mobLogout) { mobLogout.style.display = 'none'; }
+    })();
+    window.addEventListener('scroll', function() {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+    });
+    function handleSubscribe() {
+      const input = document.querySelector('.newsletter-form input');
+      if (!input.value.trim()) { alert('Please enter your email address.'); return; }
+      alert('Thank you for subscribing! Check your inbox for a confirmation email.');
+      input.value = '';
+    }
+  </script>
+</body>
+</html>

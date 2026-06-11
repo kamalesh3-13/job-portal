@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Services | Stackly — Job Portal Solutions</title>
+  <meta name="description" content="Stackly offers job posting, candidate search, employer branding and career services for job seekers and employers across India." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .page-wrapper { padding-top: 80px; min-height: 100vh; }
+    .page-hero { background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%); padding: 60px 0 40px; border-bottom: 1px solid var(--border); text-align: center; }
+    .page-hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px,5vw,42px); font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .page-hero p { color: var(--text-muted); font-size: 16px; max-width: 560px; margin: 0 auto; }
+    .hero-badges { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-top: 24px; }
+    .hero-badge-item { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-muted); }
+    .hero-badge-item i { color: var(--primary); }
+
+    .section-pad { padding: 80px 0; }
+    .alt-bg { background: rgba(255,255,255,0.01); }
+    .section-header { text-align: center; margin-bottom: 48px; }
+    .section-header h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(26px,4vw,36px); font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .section-header p { color: var(--text-muted); font-size: 16px; max-width: 580px; margin: 0 auto; }
+
+    .service-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+    .service-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 32px 24px; text-align: center; transition: all 0.3s; }
+    .service-card:hover { border-color: var(--primary); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+    .service-icon { width: 64px; height: 64px; border-radius: 16px; background: var(--gradient); margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 26px; color: #fff; }
+    .service-card h3 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .service-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; }
+    .service-link { color: var(--primary); font-size: 14px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+    .service-link:hover i { transform: translateX(4px); }
+    .service-link i { transition: transform 0.2s; }
+
+    .dual-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    @media(max-width:768px){ .dual-col { grid-template-columns: 1fr; } }
+    .dual-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 36px 28px; transition: all 0.3s; }
+    .dual-card:hover { border-color: rgba(14,165,233,0.35); }
+    .dual-card .dc-icon { width: 56px; height: 56px; border-radius: 14px; background: var(--gradient-soft); border: 1px solid rgba(14,165,233,0.2); display: flex; align-items: center; justify-content: center; font-size: 22px; color: var(--primary); margin-bottom: 20px; }
+    .dual-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .dual-card p { color: var(--text-muted); font-size: 14px; line-height: 1.7; margin-bottom: 20px; }
+    .dual-card ul { list-style: none; margin-bottom: 24px; }
+    .dual-card li { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--text-muted); }
+    .dual-card li:last-child { border-bottom: none; }
+    .dual-card li i { color: var(--primary); font-size: 13px; }
+
+    .pricing-big-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    @media(max-width:768px){ .pricing-big-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; } }
+    .pricing-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 36px 28px; text-align: center; transition: all 0.3s; position: relative; }
+    .pricing-card:hover { border-color: var(--primary); transform: translateY(-4px); }
+    .pricing-card.popular { border-color: var(--primary); background: linear-gradient(135deg, rgba(14,165,233,0.08), rgba(6,182,212,0.04)); }
+    .popular-tag { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); padding: 4px 16px; background: var(--gradient); border-radius: 99px; color: #fff; font-size: 12px; font-weight: 700; }
+    .pricing-card h4 { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .price-amount { font-family: 'Space Grotesk', sans-serif; font-size: 36px; font-weight: 800; color: var(--primary); margin-bottom: 4px; }
+    .price-period { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
+    .pricing-card ul { list-style: none; text-align: left; margin-bottom: 28px; }
+    .pricing-card li { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--text-muted); display: flex; align-items: center; gap: 10px; }
+    .pricing-card li:last-child { border-bottom: none; }
+    .pricing-card li i { color: var(--primary); font-size: 13px; }
+    .btn-plan { display: block; padding: 13px; background: var(--gradient); border-radius: 12px; color: #fff; font-size: 15px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
+    .btn-plan:hover { opacity: 0.9; }
+    .btn-plan-outline { display: block; padding: 13px; border: 1px solid var(--border); border-radius: 12px; color: var(--text); font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+    .btn-plan-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+    .features-big-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+    .feat-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 24px 18px; text-align: center; transition: all 0.3s; }
+    .feat-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .feat-card i { font-size: 28px; color: var(--primary); margin-bottom: 12px; }
+    .feat-card h5 { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .feat-card p { font-size: 13px; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><img src="assets/images/logo.webp" alt="Stackly" class="nav-logo-img" /></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="jobs.html">Find Jobs</a></li>
+        <li><a href="companies.html">Companies</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html" style="color:var(--primary)">Services</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="signin.html" class="btn-outline">Sign In</a>
+        <a href="post-job.html" class="btn-primary">Post a Job</a>
+      </div>
+      <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open'); document.body.style.overflow='hidden';">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <a href="index.html" class="mob-logo"><img src="assets/images/logo.webp" alt="Stackly" /></a>
+      <button class="mobile-menu-close" onclick="this.closest('.mobile-menu').classList.remove('open'); document.body.style.overflow='';"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <ul>
+      <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+      <li><a href="jobs.html"><i class="fa-solid fa-magnifying-glass"></i> Find Jobs</a></li>
+      <li><a href="companies.html"><i class="fa-solid fa-building"></i> Companies</a></li>
+      <li><a href="categories.html"><i class="fa-solid fa-layer-group"></i> Categories</a></li>
+      <li><a href="about.html"><i class="fa-solid fa-info-circle"></i> About</a></li>
+      <li><a href="services.html"><i class="fa-solid fa-briefcase"></i> Services</a></li>
+      <li><a href="blog.html"><i class="fa-solid fa-newspaper"></i> Blog</a></li>
+      <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+      <li><a href="index.html#how-it-works"><i class="fa-solid fa-circle-info"></i> How It Works</a></li>
+      <li><a href="index.html#testimonials"><i class="fa-solid fa-star"></i> Reviews</a></li>
+    </ul>
+    <div class="mobile-menu-footer">
+      <a href="signin.html" class="mob-signin"><i class="fa-solid fa-right-to-bracket"></i> Sign In</a>
+      <a href="register.html" class="mob-signup"><i class="fa-solid fa-user-plus"></i> Sign Up</a>
+      <a href="post-job.html" class="mob-post"><i class="fa-solid fa-plus"></i> Post a Job</a>
+      <button class="mob-logout" onclick="localStorage.removeItem('stackly_user_name'); window.location.href='index.html';"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+    </div>
+  </div>
+
+  <div class="page-wrapper">
+    <!-- SECTION 1: HERO -->
+    <div class="page-hero">
+      <div class="container">
+        <h1>Our <span class="accent">Services</span></h1>
+        <p>Comprehensive job portal solutions for job seekers and employers — from one-click applications to employer branding.</p>
+        <div class="hero-badges">
+          <span class="hero-badge-item"><i class="fa-solid fa-bolt"></i> 1,474+ active jobs</span>
+          <span class="hero-badge-item"><i class="fa-solid fa-building"></i> 800+ employers</span>
+          <span class="hero-badge-item"><i class="fa-solid fa-users"></i> 50K+ job seekers</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 2: FOR JOB SEEKERS & EMPLOYERS -->
+    <div class="section-pad">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">What We Offer</div>
+          <h2>Solutions for <span class="accent">Everyone</span></h2>
+          <p>Whether you're looking for your dream job or hiring top talent, Stackly has you covered</p>
+        </div>
+        <div class="dual-col">
+          <div class="dual-card">
+            <div class="dc-icon"><i class="fa-solid fa-user"></i></div>
+            <h3>For Job Seekers</h3>
+            <p>Find your next career move with access to thousands of verified local job listings across every industry.</p>
+            <ul>
+              <li><i class="fa-solid fa-check"></i> Browse 1,474+ active job listings</li>
+              <li><i class="fa-solid fa-check"></i> One-click apply with your profile</li>
+              <li><i class="fa-solid fa-check"></i> Real-time application tracking</li>
+              <li><i class="fa-solid fa-check"></i> Get discovered by 800+ employers</li>
+              <li><i class="fa-solid fa-check"></i> Free profile creation and resume upload</li>
+              <li><i class="fa-solid fa-check"></i> Career resources and salary insights</li>
+            </ul>
+            <a href="register.html" class="btn-primary" style="display:inline-flex;padding:12px 24px;font-size:14px;">Create Free Profile <i class="fa-solid fa-arrow-right" style="margin-left:6px;"></i></a>
+          </div>
+          <div class="dual-card">
+            <div class="dc-icon"><i class="fa-solid fa-building"></i></div>
+            <h3>For Employers</h3>
+            <p>Hire faster and smarter by reaching qualified local candidates actively looking for opportunities.</p>
+            <ul>
+              <li><i class="fa-solid fa-check"></i> Post jobs and reach 50K+ active seekers</li>
+              <li><i class="fa-solid fa-check"></i> Featured and priority job listings</li>
+              <li><i class="fa-solid fa-check"></i> Employer branding and company profile</li>
+              <li><i class="fa-solid fa-check"></i> Real-time applicant tracking dashboard</li>
+              <li><i class="fa-solid fa-check"></i> Candidate search and direct outreach</li>
+              <li><i class="fa-solid fa-check"></i> Dedicated account manager (Pro plans)</li>
+            </ul>
+            <a href="post-job.html" class="btn-primary" style="display:inline-flex;padding:12px 24px;font-size:14px;">Post a Job Now <i class="fa-solid fa-arrow-right" style="margin-left:6px;"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 3: KEY FEATURES -->
+    <div class="section-pad alt-bg">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Platform Features</div>
+          <h2>Why Choose <span class="accent">Stackly</span></h2>
+          <p>What makes Stackly the preferred job portal for local hiring in India</p>
+        </div>
+        <div class="features-big-grid">
+          <div class="feat-card">
+            <i class="fa-solid fa-location-dot"></i>
+            <h5>Hyper-Local Focus</h5>
+            <p>Jobs curated for your city and nearby areas — no irrelevant national listings.</p>
+          </div>
+          <div class="feat-card">
+            <i class="fa-solid fa-shield-check"></i>
+            <h5>Verified Listings</h5>
+            <p>Every job is verified before going live. Zero spam, zero fake posts.</p>
+          </div>
+          <div class="feat-card">
+            <i class="fa-solid fa-bolt"></i>
+            <h5>One-Click Apply</h5>
+            <p>Apply to any job with a single click using your saved profile and resume.</p>
+          </div>
+          <div class="feat-card">
+            <i class="fa-solid fa-chart-line"></i>
+            <h5>Real-Time Tracking</h5>
+            <p>Know exactly where your application stands with live status updates.</p>
+          </div>
+          <div class="feat-card">
+            <i class="fa-solid fa-mobile-screen"></i>
+            <h5>Mobile Optimised</h5>
+            <p>Full-featured experience on any device — apply from your phone instantly.</p>
+          </div>
+          <div class="feat-card">
+            <i class="fa-solid fa-headset"></i>
+            <h5>Dedicated Support</h5>
+            <p>Get help from our support team whenever you need it — chat or email.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4: PRICING PLANS -->
+    <div class="section-pad">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Pricing</div>
+          <h2>Simple <span class="accent">Plans</span></h2>
+          <p>Choose the perfect plan for your hiring needs — no hidden fees, no long-term contracts</p>
+        </div>
+        <div class="pricing-big-grid">
+          <div class="pricing-card">
+            <h4>Basic</h4>
+            <div class="price-amount">Free</div>
+            <div class="price-period">Forever free for job seekers</div>
+            <ul>
+              <li><i class="fa-solid fa-check"></i> Browse all job listings</li>
+              <li><i class="fa-solid fa-check"></i> Create profile & upload resume</li>
+              <li><i class="fa-solid fa-check"></i> One-click apply</li>
+              <li><i class="fa-solid fa-check"></i> Application tracking</li>
+              <li><i class="fa-solid fa-check"></i> Email job alerts</li>
+            </ul>
+            <a href="register.html" class="btn-plan-outline">Get Started Free</a>
+          </div>
+          <div class="pricing-card popular">
+            <div class="popular-tag">Most Popular</div>
+            <h4>Starter (Employer)</h4>
+            <div class="price-amount">₹999</div>
+            <div class="price-period">Per month · 1 active job</div>
+            <ul>
+              <li><i class="fa-solid fa-check"></i> 1 active job listing</li>
+              <li><i class="fa-solid fa-check"></i> Standard listing visibility</li>
+              <li><i class="fa-solid fa-check"></i> Applicant tracking dashboard</li>
+              <li><i class="fa-solid fa-check"></i> 30 days duration</li>
+              <li><i class="fa-solid fa-check"></i> Email support</li>
+            </ul>
+            <a href="post-job.html" class="btn-plan">Choose Starter</a>
+          </div>
+          <div class="pricing-card">
+            <h4>Pro (Employer)</h4>
+            <div class="price-amount">₹2,499</div>
+            <div class="price-period">Per month · 3 active jobs</div>
+            <ul>
+              <li><i class="fa-solid fa-check"></i> 3 active job listings</li>
+              <li><i class="fa-solid fa-check"></i> Featured & priority placement</li>
+              <li><i class="fa-solid fa-check"></i> Employer branding profile</li>
+              <li><i class="fa-solid fa-check"></i> Candidate search access</li>
+              <li><i class="fa-solid fa-check"></i> Priority support</li>
+            </ul>
+            <a href="post-job.html" class="btn-plan-outline">Choose Pro</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 5: TESTIMONIAL -->
+    <div class="section-pad alt-bg">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Testimonial</div>
+          <h2>What Our <span class="accent">Clients Say</span></h2>
+        </div>
+        <div style="max-width:640px;margin:0 auto;background:var(--card-bg);border:1px solid var(--border);border-radius:24px;padding:40px 36px;text-align:center;">
+          <i class="fa-solid fa-quote-right" style="font-size:36px;color:var(--primary);margin-bottom:20px;opacity:0.5;"></i>
+          <p style="font-size:17px;color:var(--text);line-height:1.7;font-style:italic;margin-bottom:24px;">"Stackly transformed our hiring process. We used to struggle finding quality candidates in Coimbatore. Now we get 3x more qualified applicants for every job we post. The local focus makes all the difference."</p>
+          <div style="display:flex;align-items:center;justify-content:center;gap:14px;">
+            <div style="width:48px;height:48px;border-radius:50%;background:var(--gradient);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;">RK</div>
+            <div style="text-align:left;">
+              <strong style="color:#fff;font-size:15px;">Rajesh Kumar</strong>
+              <p style="color:var(--text-muted);font-size:13px;">HR Head, KG Hospital</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 6: CTA -->
+    <div class="section-pad">
+      <div class="container">
+        <div class="cta-box" style="background:linear-gradient(135deg,rgba(14,165,233,0.12),rgba(6,182,212,0.06));border:1px solid rgba(14,165,233,0.2);border-radius:24px;padding:56px 44px;text-align:center;">
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(22px,3.5vw,32px);font-weight:700;color:#fff;margin-bottom:10px;">Ready to Get Started?</h2>
+          <p style="color:var(--text-muted);font-size:15px;margin-bottom:28px;">Join thousands of professionals and companies already on Stackly.</p>
+          <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+            <a href="register.html" class="btn-primary-lg">Create Free Account</a>
+            <a href="post-job.html" class="btn-outline-lg" style="border-color:var(--border);color:var(--text);">Post a Job</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const name = localStorage.getItem('stackly_user_name');
+      const signin = document.querySelector('.nav-actions a[href="signin.html"]');
+      const mobSignin = document.querySelector('.mob-signin');
+      const mobSignup = document.querySelector('.mob-signup');
+      const mobLogout = document.querySelector('.mob-logout');
+      if (name) {
+        if (signin) { signin.textContent = 'Hi, ' + name; signin.href = 'welcome.html'; }
+        if (mobSignin) mobSignin.style.display = 'none';
+        if (mobSignup) mobSignup.style.display = 'none';
+      } else if (mobLogout) { mobLogout.style.display = 'none'; }
+    })();
+    window.addEventListener('scroll', function() {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+    });
+  </script>
+</body>
+</html>

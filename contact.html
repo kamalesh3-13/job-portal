@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Stackly — Get in Touch</title>
+  <meta name="description" content="Contact Stackly's support team. Get help with job listings, account issues, employer partnerships, or general inquiries." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .page-wrapper { padding-top: 80px; min-height: 100vh; }
+    .page-hero { background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%); padding: 60px 0 40px; border-bottom: 1px solid var(--border); text-align: center; }
+    .page-hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px,5vw,42px); font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .page-hero p { color: var(--text-muted); font-size: 16px; max-width: 520px; margin: 0 auto; }
+
+    .section-pad { padding: 80px 0; }
+    .alt-bg { background: rgba(255,255,255,0.01); }
+
+    .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+    @media(max-width:768px){ .contact-layout { grid-template-columns: 1fr; } }
+
+    .contact-form-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 40px; }
+    .contact-form-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .contact-form-card .form-sub { color: var(--text-muted); font-size: 14px; margin-bottom: 28px; }
+    .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media(max-width:480px){ .form-grid-2 { grid-template-columns: 1fr; } }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 13px 16px; background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border); border-radius: 12px; color: var(--text);
+      font-size: 15px; font-family: 'Inter', sans-serif; outline: none; transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--primary); background: rgba(14,165,233,0.06); }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: var(--text-muted); }
+    .form-group select option { background: #1e293b; }
+    .form-group textarea { min-height: 140px; resize: vertical; line-height: 1.6; }
+
+    .contact-info-cards { display: flex; flex-direction: column; gap: 16px; }
+    .info-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 24px; display: flex; align-items: flex-start; gap: 16px; transition: all 0.3s; }
+    .info-card:hover { border-color: rgba(14,165,233,0.35); transform: translateY(-2px); }
+    .info-icon { width: 48px; height: 48px; border-radius: 12px; background: var(--gradient-soft); border: 1px solid rgba(14,165,233,0.2); display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--primary); flex-shrink: 0; }
+    .info-text h4 { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .info-text p, .info-text a { font-size: 14px; color: var(--text-muted); line-height: 1.5; text-decoration: none; display: block; }
+    .info-text a:hover { color: var(--primary); }
+
+    .map-placeholder { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 60px 30px; text-align: center; }
+    .map-placeholder i { font-size: 48px; color: var(--primary); margin-bottom: 16px; }
+    .map-placeholder h4 { font-family: 'Space Grotesk', sans-serif; font-size: 18px; color: #fff; margin-bottom: 8px; }
+    .map-placeholder p { color: var(--text-muted); font-size: 14px; }
+
+    .faq-grid { max-width: 740px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; cursor: pointer; transition: border-color 0.2s; }
+    .faq-item:hover { border-color: rgba(14,165,233,0.3); }
+    .faq-q { padding: 18px 22px; display: flex; justify-content: space-between; align-items: center; font-weight: 600; color: #fff; font-size: 15px; }
+    .faq-q i { color: var(--primary); transition: transform 0.2s; font-size: 14px; }
+    .faq-item.open .faq-q i { transform: rotate(180deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; padding: 0 22px; }
+    .faq-item.open .faq-a { max-height: 200px; padding: 0 22px 18px; }
+    .faq-a p { color: var(--text-muted); font-size: 14px; line-height: 1.7; }
+
+    .social-contact-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .social-contact-link { display: flex; align-items: center; gap: 8px; padding: 12px 22px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: all 0.2s; }
+    .social-contact-link:hover { border-color: var(--primary); color: var(--primary); background: rgba(14,165,233,0.06); }
+    .social-contact-link i { font-size: 18px; }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><img src="assets/images/logo.webp" alt="Stackly" class="nav-logo-img" /></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="jobs.html">Find Jobs</a></li>
+        <li><a href="companies.html">Companies</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" style="color:var(--primary)">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="signin.html" class="btn-outline">Sign In</a>
+        <a href="post-job.html" class="btn-primary">Post a Job</a>
+      </div>
+      <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open'); document.body.style.overflow='hidden';">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <a href="index.html" class="mob-logo"><img src="assets/images/logo.webp" alt="Stackly" /></a>
+      <button class="mobile-menu-close" onclick="this.closest('.mobile-menu').classList.remove('open'); document.body.style.overflow='';"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <ul>
+      <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+      <li><a href="jobs.html"><i class="fa-solid fa-magnifying-glass"></i> Find Jobs</a></li>
+      <li><a href="companies.html"><i class="fa-solid fa-building"></i> Companies</a></li>
+      <li><a href="categories.html"><i class="fa-solid fa-layer-group"></i> Categories</a></li>
+      <li><a href="about.html"><i class="fa-solid fa-info-circle"></i> About</a></li>
+      <li><a href="services.html"><i class="fa-solid fa-briefcase"></i> Services</a></li>
+      <li><a href="blog.html"><i class="fa-solid fa-newspaper"></i> Blog</a></li>
+      <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+      <li><a href="index.html#how-it-works"><i class="fa-solid fa-circle-info"></i> How It Works</a></li>
+      <li><a href="index.html#testimonials"><i class="fa-solid fa-star"></i> Reviews</a></li>
+    </ul>
+    <div class="mobile-menu-footer">
+      <a href="signin.html" class="mob-signin"><i class="fa-solid fa-right-to-bracket"></i> Sign In</a>
+      <a href="register.html" class="mob-signup"><i class="fa-solid fa-user-plus"></i> Sign Up</a>
+      <a href="post-job.html" class="mob-post"><i class="fa-solid fa-plus"></i> Post a Job</a>
+      <button class="mob-logout" onclick="localStorage.removeItem('stackly_user_name'); window.location.href='index.html';"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+    </div>
+  </div>
+
+  <div class="page-wrapper">
+    <!-- SECTION 1: HERO -->
+    <div class="page-hero">
+      <div class="container">
+        <h1>Contact <span class="accent">Us</span></h1>
+        <p>Have a question, feedback, or want to partner with us? We'd love to hear from you.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 2: FORM + INFO -->
+    <div class="section-pad">
+      <div class="container">
+        <div class="contact-layout">
+          <div class="contact-form-card">
+            <h3>Send Us a Message</h3>
+            <p class="form-sub">Fill out the form below and our team will get back to you within 24 hours.</p>
+            <div class="form-grid-2">
+              <div class="form-group"><label>First Name *</label><input type="text" placeholder="John" id="contactFname" /></div>
+              <div class="form-group"><label>Last Name *</label><input type="text" placeholder="Doe" id="contactLname" /></div>
+            </div>
+            <div class="form-group"><label>Email Address *</label><input type="email" placeholder="you@example.com" id="contactEmail" /></div>
+            <div class="form-group">
+              <label>Subject</label>
+              <select id="contactSubject">
+                <option>General Inquiry</option>
+                <option>Job Listing Support</option>
+                <option>Account Assistance</option>
+                <option>Employer Partnership</option>
+                <option>Career Advice</option>
+                <option>Report an Issue</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Message *</label><textarea placeholder="Tell us how we can help..." id="contactMessage"></textarea></div>
+            <button class="btn-submit" style="width:100%;padding:16px;background:var(--gradient);border:none;border-radius:14px;color:#fff;font-size:17px;font-weight:700;font-family:'Inter',sans-serif;cursor:pointer;box-shadow:0 8px 28px rgba(14,165,233,0.4);transition:all 0.2s;" onclick="handleContactSubmit()">
+              <i class="fa-solid fa-paper-plane"></i> Send Message
+            </button>
+          </div>
+
+          <div class="contact-info-cards">
+            <div class="info-card">
+              <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div class="info-text">
+                <h4>Email Us</h4>
+                <a href="mailto:support@stackly.in">support@stackly.in</a>
+                <a href="mailto:partners@stackly.in">partners@stackly.in</a>
+              </div>
+            </div>
+            <div class="info-card">
+              <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+              <div class="info-text">
+                <h4>Call Us</h4>
+                <p>+91 98765 43210</p>
+                <p>Mon–Sat, 9 AM – 7 PM IST</p>
+              </div>
+            </div>
+            <div class="info-card">
+              <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div class="info-text">
+                <h4>Our Office</h4>
+                <p>123, Avinashi Road, Peelamedu</p>
+                <p>Coimbatore, Tamil Nadu 641004</p>
+              </div>
+            </div>
+            <div class="info-card">
+              <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
+              <div class="info-text">
+                <h4>Business Hours</h4>
+                <p>Monday – Saturday: 9:00 AM – 7:00 PM</p>
+                <p>Sunday: Closed</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 3: MAP -->
+    <div class="section-pad alt-bg">
+      <div class="container">
+        <div class="map-placeholder">
+          <i class="fa-solid fa-map-location-dot"></i>
+          <h4>Find Us in <span class="accent">Coimbatore</span></h4>
+          <p>123, Avinashi Road, Peelamedu, Coimbatore — Near CODISSIA Trade Fair Grounds</p>
+          <div style="margin-top:20px;">
+            <a href="https://maps.google.com" target="_blank" class="btn-primary" style="display:inline-flex;padding:10px 22px;font-size:14px;text-decoration:none;"><i class="fa-solid fa-map-pin"></i> Open in Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4: FAQ -->
+    <div class="section-pad">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">FAQs</div>
+          <h2>Frequently Asked <span class="accent">Questions</span></h2>
+          <p>Quick answers to the most common questions about Stackly</p>
+        </div>
+        <div class="faq-grid">
+          <div class="faq-item open" onclick="toggleFaq(this)">
+            <div class="faq-q">How do I create an account on Stackly? <i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-a"><p>Click the "Sign Up" button on the top right or visit the Register page. Fill in your details, choose whether you're a job seeker or employer, and create your free account in under 2 minutes.</p></div>
+          </div>
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q">Is Stackly really free for job seekers? <i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-a"><p>Absolutely! Creating a profile, browsing jobs, and applying are completely free for job seekers. You only pay if you choose to post a job as an employer.</p></div>
+          </div>
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q">How do I apply for a job? <i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-a"><p>Once you find a job you're interested in, click the "Apply Now" button. You can apply using your saved profile and resume with just one click, or fill out a detailed application form.</p></div>
+          </div>
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q">How can employers post jobs on Stackly? <i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-a"><p>Visit the "Post a Job" page, fill in your job details, select a plan, and publish. Your job will go live after a quick verification — usually within a few hours.</p></div>
+          </div>
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q">What areas does Stackly cover? <i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-a"><p>Stackly currently focuses on Coimbatore and nearby cities including Tirupur, Erode, Salem, and Pollachi. We're expanding to more cities across Tamil Nadu soon.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 5: SOCIAL CONNECT -->
+    <div class="section-pad alt-bg">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Stay Connected</div>
+          <h2>Follow <span class="accent">Stackly</span></h2>
+          <p>Join our community on social media for job alerts, tips, and updates</p>
+        </div>
+        <div class="social-contact-links">
+          <a href="#" class="social-contact-link"><i class="fa-brands fa-twitter"></i> Twitter / X</a>
+          <a href="#" class="social-contact-link"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+          <a href="#" class="social-contact-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+          <a href="#" class="social-contact-link"><i class="fa-brands fa-facebook"></i> Facebook</a>
+          <a href="#" class="social-contact-link"><i class="fa-brands fa-youtube"></i> YouTube</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const name = localStorage.getItem('stackly_user_name');
+      const signin = document.querySelector('.nav-actions a[href="signin.html"]');
+      const mobSignin = document.querySelector('.mob-signin');
+      const mobSignup = document.querySelector('.mob-signup');
+      const mobLogout = document.querySelector('.mob-logout');
+      if (name) {
+        if (signin) { signin.textContent = 'Hi, ' + name; signin.href = 'welcome.html'; }
+        if (mobSignin) mobSignin.style.display = 'none';
+        if (mobSignup) mobSignup.style.display = 'none';
+      } else if (mobLogout) { mobLogout.style.display = 'none'; }
+    })();
+    window.addEventListener('scroll', function() {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+    });
+    function handleContactSubmit() {
+      const fname = document.getElementById('contactFname').value.trim();
+      const email = document.getElementById('contactEmail').value.trim();
+      const msg = document.getElementById('contactMessage').value.trim();
+      if (!fname || !email || !msg) { alert('Please fill in all required fields.'); return; }
+      alert('Thank you for reaching out, ' + fname + '! Our team will respond within 24 hours.');
+    }
+    function toggleFaq(el) {
+      el.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>

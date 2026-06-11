@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jobs on Stackly – No.1 Job Portal</title>
+  <meta name="description" content="Find 1,474+ urgent jobs on Stackly. Apply to top companies hiring now for IT, Manufacturing, BPO, Healthcare & more." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="loader-content">
+      <div class="loader-logo">
+        <img src="assets/images/logo.webp" alt="Stackly Logo" class="loader-logo-img" />
+      </div>
+      <p class="loader-tagline">Finding Your Dream Career on Stackly...</p>
+      <div class="loader-bar"><div class="loader-progress"></div></div>
+    </div>
+  </div>
+
+  <!-- MAIN SITE -->
+  <div id="main-site" style="display:none;">
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo">
+          <img src="assets/images/logo.webp" alt="Stackly" class="nav-logo-img" />
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="jobs.html">Find Jobs</a></li>
+          <li><a href="companies.html">Companies</a></li>
+          <li><a href="categories.html">Categories</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="signin.html" class="btn-outline">Sign In</a>
+          <a href="post-job.html" class="btn-primary">Post a Job</a>
+        </div>
+        <button class="hamburger" onclick="openMenu()">
+          <i class="fa-solid fa-bars" id="hamburgerIcon"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-menu-header">
+        <a href="index.html" class="mob-logo">
+          <img src="assets/images/logo.webp" alt="Stackly" />
+        </a>
+        <button class="mobile-menu-close" onclick="closeMenu()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <ul>
+        <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li><a href="jobs.html"><i class="fa-solid fa-magnifying-glass"></i> Find Jobs</a></li>
+        <li><a href="companies.html"><i class="fa-solid fa-building"></i> Companies</a></li>
+        <li><a href="categories.html"><i class="fa-solid fa-layer-group"></i> Categories</a></li>
+        <li><a href="about.html"><i class="fa-solid fa-info-circle"></i> About</a></li>
+        <li><a href="services.html"><i class="fa-solid fa-briefcase"></i> Services</a></li>
+        <li><a href="blog.html"><i class="fa-solid fa-newspaper"></i> Blog</a></li>
+        <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+        <li><a href="#how-it-works"><i class="fa-solid fa-circle-info"></i> How It Works</a></li>
+        <li><a href="#testimonials"><i class="fa-solid fa-star"></i> Reviews</a></li>
+      </ul>
+          <div class="mobile-menu-footer">
+      <a href="signin.html" class="mob-signin"><i class="fa-solid fa-right-to-bracket"></i> Sign In</a>
+      <a href="register.html" class="mob-signup"><i class="fa-solid fa-user-plus"></i> Sign Up</a>
+      <a href="post-job.html" class="mob-post"><i class="fa-solid fa-plus"></i> Post a Job</a>
+      <button class="mob-logout" onclick="localStorage.removeItem('stackly_user_name'); window.location.href='index.html';"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+    </div>
+  </div>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+      </div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge"><i class="fa-solid fa-bolt"></i> 1,474+ Urgent Jobs on Stackly</div>
+          <h1 class="hero-title">Find Your Dream Job on <span class="accent">Stackly</span></h1>
+          <p class="hero-subtitle">Connect with top employers across India. IT, Manufacturing, BPO, Healthcare and more — your next career move starts here.</p>
+
+          <!-- Search Bar -->
+          <div class="search-box">
+            <div class="search-field">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" placeholder="Job title, keyword, or company" />
+            </div>
+            <div class="search-divider"></div>
+            <div class="search-field">
+              <i class="fa-solid fa-location-dot"></i>
+              <input type="text" placeholder="Coimbatore, Erode, Tirupur..." />
+            </div>
+            <button class="search-btn" onclick="window.location.href='jobs.html'">Search Jobs</button>
+          </div>
+
+          <div class="hero-tags">
+            <span>Popular:</span>
+            <a href="jobs.html">Software Engineer</a>
+            <a href="jobs.html">BPO / Call Centre</a>
+            <a href="jobs.html">Mechanical Engineer</a>
+            <a href="jobs.html">Accounts</a>
+            <a href="jobs.html">Fresher Jobs</a>
+          </div>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-card">
+            <div class="stat-number">1,474+</div>
+            <div class="stat-label">Active Jobs</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">800+</div>
+            <div class="stat-label">Companies</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">50K+</div>
+            <div class="stat-label">Job Seekers</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">95%</div>
+            <div class="stat-label">Success Rate</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="categories" id="categories">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Explore by Field</div>
+          <h2>Browse <span class="accent">Job Categories</span></h2>
+          <p>Top hiring sectors across India</p>
+        </div>
+        <div class="categories-grid">
+          <a href="jobs.html" class="category-card" style="text-decoration:none;display:block;">
+            <div class="cat-icon"><i class="fa-solid fa-code"></i></div>
+            <h3>IT / Software</h3>
+            <p>320 jobs</p>
+          </a>
+          <a href="jobs.html" class="category-card" style="text-decoration:none;display:block;">
+            <div class="cat-icon"><i class="fa-solid fa-industry"></i></div>
+            <h3>Manufacturing</h3>
+            <p>218 jobs</p>
+          </a>
+          <a href="jobs.html" class="category-card" style="text-decoration:none;display:block;">
+            <div class="cat-icon"><i class="fa-solid fa-headset"></i></div>
+            <h3>BPO / Call Centre</h3>
+            <p>185 jobs</p>
+          </a>
+          <a href="jobs.html" class="category-card" style="text-decoration:none;display:block;">
+            <div class="cat-icon"><i class="fa-solid fa-stethoscope"></i></div>
+            <h3>Healthcare</h3>
+            <p>142 jobs</p>
+          </a>
+          <a href="jobs.html" class="category-card" style="text-decoration:none;display:block;">
+            <div class="cat-icon"><i class="fa-solid fa-calculator"></i></div>
+            <h3>Accounts / Finance</h3>
+            <p>198 jobs</p>
+          </a>
+          <a href="jobs.html" class="category-card" style="text-decoration:none;display:block;">
+            <div class="cat-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+            <h3>Education</h3>
+            <p>96 jobs</p>
+          </a>
+          <a href="jobs.html" class="category-card" style="text-decoration:none;display:block;">
+            <div class="cat-icon"><i class="fa-solid fa-shirt"></i></div>
+            <h3>Textile / Garments</h3>
+            <p>110 jobs</p>
+          </a>
+          <a href="jobs.html" class="category-card" style="text-decoration:none;display:block;">
+            <div class="cat-icon"><i class="fa-solid fa-gears"></i></div>
+            <h3>Mechanical Engg</h3>
+            <p>134 jobs</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED JOBS -->
+    <section class="jobs" id="jobs">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Latest Openings</div>
+          <h2>Urgent <span class="accent">Jobs on Stackly</span></h2>
+          <p>Hand-picked opportunities from top employers hiring right now</p>
+        </div>
+        <div class="jobs-grid">
+
+          <div class="job-card featured">
+            <div class="job-top">
+              <div class="company-logo google"><i class="fa-solid fa-laptop-code"></i></div>
+              <span class="job-badge">Urgent</span>
+            </div>
+            <h3 class="job-title">Software Developer</h3>
+            <p class="job-company">LG Soft India – Coimbatore</p>
+            <div class="job-meta">
+              <span><i class="fa-solid fa-location-dot"></i> Peelamedu, Coimbatore</span>
+              <span><i class="fa-solid fa-clock"></i> Full-time</span>
+            </div>
+            <div class="job-salary">₹4,00,000 – ₹8,00,000/yr</div>
+            <div class="job-tags"><span>Java</span><span>React</span><span>MySQL</span></div>
+            <a href="apply.html" class="btn-apply">Apply Now</a>
+          </div>
+
+          <div class="job-card">
+            <div class="job-top">
+              <div class="company-logo meta"><i class="fa-solid fa-headset"></i></div>
+              <span class="job-badge new">New</span>
+            </div>
+            <h3 class="job-title">Customer Support Executive</h3>
+            <p class="job-company">Wipro BPS – Coimbatore</p>
+            <div class="job-meta">
+              <span><i class="fa-solid fa-location-dot"></i> RS Puram, Coimbatore</span>
+              <span><i class="fa-solid fa-clock"></i> Full-time</span>
+            </div>
+            <div class="job-salary">₹2,40,000 – ₹3,60,000/yr</div>
+            <div class="job-tags"><span>English</span><span>Tamil</span><span>Voice</span></div>
+            <a href="apply.html" class="btn-apply">Apply Now</a>
+          </div>
+
+          <div class="job-card">
+            <div class="job-top">
+              <div class="company-logo amazon"><i class="fa-solid fa-gears"></i></div>
+              <span class="job-badge">Hot</span>
+            </div>
+            <h3 class="job-title">Mechanical Design Engineer</h3>
+            <p class="job-company">Roots Industries – Coimbatore</p>
+            <div class="job-meta">
+              <span><i class="fa-solid fa-location-dot"></i> SIPCOT, Coimbatore</span>
+              <span><i class="fa-solid fa-clock"></i> Full-time</span>
+            </div>
+            <div class="job-salary">₹3,50,000 – ₹6,00,000/yr</div>
+            <div class="job-tags"><span>AutoCAD</span><span>SolidWorks</span><span>CNC</span></div>
+            <a href="apply.html" class="btn-apply">Apply Now</a>
+          </div>
+
+          <div class="job-card">
+            <div class="job-top">
+              <div class="company-logo microsoft"><i class="fa-solid fa-calculator"></i></div>
+              <span class="job-badge new">New</span>
+            </div>
+            <h3 class="job-title">Accounts Manager</h3>
+            <p class="job-company">TVS Group – Coimbatore</p>
+            <div class="job-meta">
+              <span><i class="fa-solid fa-location-dot"></i> Avinashi Road, Coimbatore</span>
+              <span><i class="fa-solid fa-clock"></i> Full-time</span>
+            </div>
+            <div class="job-salary">₹5,00,000 – ₹9,00,000/yr</div>
+            <div class="job-tags"><span>Tally</span><span>GST</span><span>SAP</span></div>
+            <a href="apply.html" class="btn-apply">Apply Now</a>
+          </div>
+
+          <div class="job-card">
+            <div class="job-top">
+              <div class="company-logo apple"><i class="fa-solid fa-stethoscope"></i></div>
+              <span class="job-badge">Featured</span>
+            </div>
+            <h3 class="job-title">Staff Nurse</h3>
+            <p class="job-company">KG Hospital – Coimbatore</p>
+            <div class="job-meta">
+              <span><i class="fa-solid fa-location-dot"></i> Avanashi Road, Coimbatore</span>
+              <span><i class="fa-solid fa-clock"></i> Full-time</span>
+            </div>
+            <div class="job-salary">₹2,80,000 – ₹4,50,000/yr</div>
+            <div class="job-tags"><span>B.Sc Nursing</span><span>ICU</span><span>ER</span></div>
+            <a href="apply.html" class="btn-apply">Apply Now</a>
+          </div>
+
+          <div class="job-card">
+            <div class="job-top">
+              <div class="company-logo netflix"><i class="fa-solid fa-shirt"></i></div>
+              <span class="job-badge new">New</span>
+            </div>
+            <h3 class="job-title">Production Supervisor</h3>
+            <p class="job-company">Tirupur Knits Ltd – Tirupur</p>
+            <div class="job-meta">
+              <span><i class="fa-solid fa-location-dot"></i> Tirupur (Near Coimbatore)</span>
+              <span><i class="fa-solid fa-clock"></i> Full-time</span>
+            </div>
+            <div class="job-salary">₹3,00,000 – ₹5,00,000/yr</div>
+            <div class="job-tags"><span>Textile</span><span>Knitting</span><span>Quality</span></div>
+            <a href="apply.html" class="btn-apply">Apply Now</a>
+          </div>
+
+        </div>
+        <div class="view-all-wrap">
+          <a href="jobs.html" class="btn-outline-lg">View All 1,474+ Jobs on Stackly <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-it-works" id="how-it-works">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Simple Process</div>
+          <h2>How <span class="accent">Stackly</span> Works</h2>
+          <p>Get hired in three simple steps</p>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">01</div>
+            <div class="step-icon"><i class="fa-solid fa-user-plus"></i></div>
+            <h3>Create Your Profile</h3>
+            <p>Register free and build your profile in minutes. Upload your resume and let top employers find you directly.</p>
+          </div>
+          <div class="step-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          <div class="step-card">
+            <div class="step-number">02</div>
+            <div class="step-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <h3>Discover Local Jobs</h3>
+            <p>Browse 1,474+ curated job listings across India. Filter by salary, industry, and experience.</p>
+          </div>
+          <div class="step-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          <div class="step-card">
+            <div class="step-number">03</div>
+            <div class="step-icon"><i class="fa-solid fa-paper-plane"></i></div>
+            <h3>Apply & Get Hired</h3>
+            <p>Apply with one click using your profile. Track your applications and get real-time updates from employers.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOP COMPANIES -->
+    <section class="companies" id="companies">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Top Employers</div>
+          <h2>Companies <span class="accent">Hiring on Stackly</span></h2>
+          <p>Join thousands of professionals who found jobs at these leading companies</p>
+        </div>
+        <div class="companies-grid">
+          <div class="company-card">
+            <div class="co-logo google"><i class="fa-solid fa-laptop-code"></i></div>
+            <h4>LG Soft India</h4>
+            <p>42 open roles</p>
+            <a href="jobs.html">View Jobs</a>
+          </div>
+          <div class="company-card">
+            <div class="co-logo meta"><i class="fa-solid fa-industry"></i></div>
+            <h4>Roots Industries</h4>
+            <p>28 open roles</p>
+            <a href="jobs.html">View Jobs</a>
+          </div>
+          <div class="company-card">
+            <div class="co-logo amazon"><i class="fa-solid fa-car"></i></div>
+            <h4>TVS Group</h4>
+            <p>65 open roles</p>
+            <a href="jobs.html">View Jobs</a>
+          </div>
+          <div class="company-card">
+            <div class="co-logo microsoft"><i class="fa-solid fa-stethoscope"></i></div>
+            <h4>KG Hospital</h4>
+            <p>37 open roles</p>
+            <a href="jobs.html">View Jobs</a>
+          </div>
+          <div class="company-card">
+            <div class="co-logo apple"><i class="fa-solid fa-headset"></i></div>
+            <h4>Wipro BPS</h4>
+            <p>54 open roles</p>
+            <a href="jobs.html">View Jobs</a>
+          </div>
+          <div class="company-card">
+            <div class="co-logo slack"><i class="fa-solid fa-shirt"></i></div>
+            <h4>Tirupur Knits</h4>
+            <p>23 open roles</p>
+            <a href="jobs.html">View Jobs</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Success Stories</div>
+          <h2>What Our <span class="accent">Users Say</span></h2>
+          <p>Real people, real results</p>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>"I found my job as a Software Developer at an IT park in Peelamedu within 2 weeks of registering. Stackly is the best local job portal!"</p>
+            <div class="testimonial-author">
+              <div class="author-avatar av1">A</div>
+              <div>
+                <strong>Arun Kumar</strong>
+                <span>Software Developer</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card featured-testimonial">
+            <div class="stars">★★★★★</div>
+            <p>"As an HR Manager, this portal helped us hire 10 engineers in one month. The quality of candidates is outstanding. Highly recommended!"</p>
+            <div class="testimonial-author">
+              <div class="author-avatar av2">P</div>
+              <div>
+                <strong>Priya Lakshmi</strong>
+                <span>HR Manager, Roots Industries</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>"After completing my B.E. Mechanical, I applied through Stackly and got placed at a top manufacturing firm in SIPCOT within 3 weeks!"</p>
+            <div class="testimonial-author">
+              <div class="author-avatar av3">K</div>
+              <div>
+                <strong>Karthik Rajan</strong>
+                <span>Mechanical Engineer, SIPCOT Coimbatore</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY STACKLY -->
+    <section class="why-stackly" style="padding:90px 0;">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Why Stackly</div>
+          <h2>Why <span class="accent">Stackly</span> Stands Out</h2>
+          <p>What makes us the preferred job portal for local hiring in India</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;">
+          <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:20px;padding:32px 24px;text-align:center;transition:all 0.3s;" onmouseover="this.style.borderColor='var(--primary)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='';this.style.transform=''">
+            <div style="width:56px;height:56px;border-radius:14px;background:var(--gradient-soft);border:1px solid rgba(14,165,233,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:22px;color:var(--primary-light);"><i class="fa-solid fa-location-dot"></i></div>
+            <h4 style="font-size:16px;font-weight:700;color:#fff;margin-bottom:8px;">Hyper-Local Jobs</h4>
+            <p style="font-size:14px;color:var(--text-muted);line-height:1.6;">Every listing is from your city or nearby — no irrelevant national posts.</p>
+          </div>
+          <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:20px;padding:32px 24px;text-align:center;transition:all 0.3s;" onmouseover="this.style.borderColor='var(--primary)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='';this.style.transform=''">
+            <div style="width:56px;height:56px;border-radius:14px;background:var(--gradient-soft);border:1px solid rgba(14,165,233,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:22px;color:var(--primary-light);"><i class="fa-solid fa-shield-check"></i></div>
+            <h4 style="font-size:16px;font-weight:700;color:#fff;margin-bottom:8px;">Verified Listings</h4>
+            <p style="font-size:14px;color:var(--text-muted);line-height:1.6;">Every job is verified before going live. Zero spam, zero fake posts.</p>
+          </div>
+          <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:20px;padding:32px 24px;text-align:center;transition:all 0.3s;" onmouseover="this.style.borderColor='var(--primary)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='';this.style.transform=''">
+            <div style="width:56px;height:56px;border-radius:14px;background:var(--gradient-soft);border:1px solid rgba(14,165,233,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:22px;color:var(--primary-light);"><i class="fa-solid fa-bolt"></i></div>
+            <h4 style="font-size:16px;font-weight:700;color:#fff;margin-bottom:8px;">One-Click Apply</h4>
+            <p style="font-size:14px;color:var(--text-muted);line-height:1.6;">Apply to any job instantly using your saved profile and resume.</p>
+          </div>
+          <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:20px;padding:32px 24px;text-align:center;transition:all 0.3s;" onmouseover="this.style.borderColor='var(--primary)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='';this.style.transform=''">
+            <div style="width:56px;height:56px;border-radius:14px;background:var(--gradient-soft);border:1px solid rgba(14,165,233,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:22px;color:var(--primary-light);"><i class="fa-solid fa-headset"></i></div>
+            <h4 style="font-size:16px;font-weight:700;color:#fff;margin-bottom:8px;">Dedicated Support</h4>
+            <p style="font-size:14px;color:var(--text-muted);line-height:1.6;">Our team is here to help you every step of the way — chat or email.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-box">
+          <div class="cta-text">
+            <h2>Ready to Find Your <span class="accent">Dream Job?</span></h2>
+            <p>Join over 50,000 professionals who have already found their perfect role through Stackly.</p>
+          </div>
+          <div class="cta-actions">
+            <a href="register.html" class="btn-primary-lg">Get Started Free</a>
+            <a href="post-job.html" class="btn-outline-lg white">Post a Job</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a href="index.html" class="footer-logo-link">
+              <img src="assets/images/logo.webp" alt="Stackly" class="footer-logo-img" />
+            </a>
+            <p>India's growing Job Portal. Connecting talent with top employers nationwide.</p>
+            <div class="social-links">
+              <a href="#"><i class="fa-brands fa-twitter"></i></a>
+              <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            </div>
+          </div>
+          <div class="footer-links">
+            <div class="footer-col">
+              <h5>For Job Seekers</h5>
+              <ul>
+                <li><a href="jobs.html">Browse Jobs</a></li>
+                <li><a href="register.html">Create Profile</a></li>
+                <li><a href="#">Career Resources</a></li>
+                <li><a href="#">Salary Guide</a></li>
+                <li><a href="#">Resume Tips</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h5>For Employers</h5>
+              <ul>
+                <li><a href="post-job.html">Post a Job</a></li>
+                <li><a href="#">Search Candidates</a></li>
+                <li><a href="#">Pricing Plans</a></li>
+                <li><a href="#">Employer Branding</a></li>
+                <li><a href="#">Recruitment Solutions</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h5>Top Cities</h5>
+              <ul>
+                <li><a href="jobs.html">Jobs on Stackly</a></li>
+                <li><a href="jobs.html">Jobs in Tirupur</a></li>
+                <li><a href="jobs.html">Jobs in Erode</a></li>
+                <li><a href="jobs.html">Jobs in Salem</a></li>
+                <li><a href="jobs.html">Jobs in Pollachi</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 Stackly. All rights reserved. | India's Trusted Local Job Portal</p>
+          <div class="footer-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookie Policy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- /main-site -->
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Stackly | India's Growing Job Portal</title>
+  <meta name="description" content="Learn about Stackly — India's trusted local job portal connecting talent with top employers across Coimbatore, Tirupur, Erode and beyond." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .page-wrapper { padding-top: 80px; min-height: 100vh; }
+    .page-hero { background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%); padding: 60px 0 40px; border-bottom: 1px solid var(--border); text-align: center; }
+    .page-hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px,5vw,42px); font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .page-hero p { color: var(--text-muted); font-size: 16px; max-width: 600px; margin: 0 auto; }
+
+    .section-pad { padding: 80px 0; }
+    .section-header { text-align: center; margin-bottom: 48px; }
+    .section-header h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(26px,4vw,36px); font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .section-header p { color: var(--text-muted); font-size: 16px; max-width: 580px; margin: 0 auto; }
+
+    .mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    @media(max-width:768px){ .mission-grid { grid-template-columns: 1fr; gap: 28px; } }
+    .mission-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 20px; }
+    .mission-text p { color: var(--text-muted); font-size: 15px; line-height: 1.8; margin-bottom: 16px; }
+    .mission-image { background: var(--gradient-soft); border: 1px solid var(--border); border-radius: 24px; padding: 60px 40px; text-align: center; }
+    .mission-image i { font-size: 72px; color: var(--primary); margin-bottom: 16px; }
+    .mission-image h4 { font-family: 'Space Grotesk', sans-serif; font-size: 20px; color: #fff; }
+
+    .alt-bg { background: rgba(255,255,255,0.01); }
+
+    .stats-grid-big { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    @media(max-width:768px){ .stats-grid-big { grid-template-columns: repeat(2, 1fr); } }
+    @media(max-width:480px){ .stats-grid-big { grid-template-columns: 1fr; } }
+    .stat-big-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 32px 20px; text-align: center; transition: all 0.3s; }
+    .stat-big-card:hover { border-color: var(--primary); transform: translateY(-4px); }
+    .stat-big-num { font-family: 'Space Grotesk', sans-serif; font-size: 36px; font-weight: 800; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .stat-big-label { font-size: 14px; color: var(--text-muted); margin-top: 6px; }
+    .stat-big-icon { font-size: 28px; color: var(--primary); margin-bottom: 14px; }
+
+    .values-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+    .value-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 32px 24px; text-align: center; transition: all 0.3s; }
+    .value-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .value-icon { width: 60px; height: 60px; border-radius: 16px; background: var(--gradient); margin: 0 auto 18px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #fff; }
+    .value-card h4 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .value-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+    .timeline { position: relative; max-width: 700px; margin: 0 auto; padding-left: 40px; }
+    .timeline::before { content: ''; position: absolute; left: 14px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+    .tl-item { position: relative; margin-bottom: 36px; padding-left: 20px; }
+    .tl-dot { position: absolute; left: -34px; top: 4px; width: 16px; height: 16px; border-radius: 50%; background: var(--gradient); border: 3px solid var(--dark); }
+    .tl-year { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+    .tl-item h4 { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .tl-item p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+    .team-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 28px 20px; text-align: center; transition: all 0.3s; }
+    .team-card:hover { border-color: rgba(14,165,233,0.4); transform: translateY(-4px); }
+    .team-avatar { width: 72px; height: 72px; border-radius: 50%; background: var(--gradient); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; color: #fff; font-weight: 700; font-family: 'Space Grotesk', sans-serif; }
+    .team-card h4 { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .team-card .team-role { font-size: 13px; color: var(--primary); margin-bottom: 10px; }
+    .team-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><img src="assets/images/logo.webp" alt="Stackly" class="nav-logo-img" /></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="jobs.html">Find Jobs</a></li>
+        <li><a href="companies.html">Companies</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="about.html" style="color:var(--primary)">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="signin.html" class="btn-outline">Sign In</a>
+        <a href="post-job.html" class="btn-primary">Post a Job</a>
+      </div>
+      <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open'); document.body.style.overflow='hidden';">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <a href="index.html" class="mob-logo"><img src="assets/images/logo.webp" alt="Stackly" /></a>
+      <button class="mobile-menu-close" onclick="this.closest('.mobile-menu').classList.remove('open'); document.body.style.overflow='';"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <ul>
+      <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+      <li><a href="jobs.html"><i class="fa-solid fa-magnifying-glass"></i> Find Jobs</a></li>
+      <li><a href="companies.html"><i class="fa-solid fa-building"></i> Companies</a></li>
+      <li><a href="categories.html"><i class="fa-solid fa-layer-group"></i> Categories</a></li>
+      <li><a href="about.html"><i class="fa-solid fa-info-circle"></i> About</a></li>
+      <li><a href="services.html"><i class="fa-solid fa-briefcase"></i> Services</a></li>
+      <li><a href="blog.html"><i class="fa-solid fa-newspaper"></i> Blog</a></li>
+      <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+      <li><a href="index.html#how-it-works"><i class="fa-solid fa-circle-info"></i> How It Works</a></li>
+      <li><a href="index.html#testimonials"><i class="fa-solid fa-star"></i> Reviews</a></li>
+    </ul>
+    <div class="mobile-menu-footer">
+      <a href="signin.html" class="mob-signin"><i class="fa-solid fa-right-to-bracket"></i> Sign In</a>
+      <a href="register.html" class="mob-signup"><i class="fa-solid fa-user-plus"></i> Sign Up</a>
+      <a href="post-job.html" class="mob-post"><i class="fa-solid fa-plus"></i> Post a Job</a>
+      <button class="mob-logout" onclick="localStorage.removeItem('stackly_user_name'); window.location.href='index.html';"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+    </div>
+  </div>
+
+  <div class="page-wrapper">
+    <!-- SECTION 1: HERO -->
+    <div class="page-hero">
+      <div class="container">
+        <h1>About <span class="accent">Stackly</span></h1>
+        <p>India's trusted local job portal — connecting talent with top employers across Coimbatore, Tirupur, Erode and beyond.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 2: MISSION -->
+    <div class="section-pad">
+      <div class="container">
+        <div class="mission-grid">
+          <div class="mission-text">
+            <h3>Our <span class="accent">Mission</span></h3>
+            <p>Stackly was founded with a simple belief — finding a job should not be a struggle. We bridge the gap between talented professionals and great employers by making job hunting local, transparent, and efficient.</p>
+            <p>We focus on Tier-2 and Tier-3 cities where traditional job platforms fall short. Our hyper-local approach ensures that job seekers find opportunities in their own backyard and employers connect with the best local talent.</p>
+            <p>From IT parks in Peelamedu to manufacturing hubs in SIPCOT, from textile units in Tirupur to hospitals in Avinashi Road — we cover every corner of the local job market.</p>
+          </div>
+          <div class="mission-image">
+            <i class="fa-solid fa-rocket"></i>
+            <h4>Empowering Local Careers</h4>
+            <p style="color:var(--text-muted);margin-top:12px;font-size:14px;">1,474+ active jobs & growing every day</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 3: STATS -->
+    <div class="section-pad alt-bg">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Our Impact</div>
+          <h2>Stackly by the <span class="accent">Numbers</span></h2>
+          <p>Trusted by thousands of job seekers and employers across India</p>
+        </div>
+        <div class="stats-grid-big">
+          <div class="stat-big-card">
+            <div class="stat-big-icon"><i class="fa-solid fa-briefcase"></i></div>
+            <div class="stat-big-num">1,474+</div>
+            <div class="stat-big-label">Active Job Listings</div>
+          </div>
+          <div class="stat-big-card">
+            <div class="stat-big-icon"><i class="fa-solid fa-building"></i></div>
+            <div class="stat-big-num">800+</div>
+            <div class="stat-big-label">Partner Companies</div>
+          </div>
+          <div class="stat-big-card">
+            <div class="stat-big-icon"><i class="fa-solid fa-users"></i></div>
+            <div class="stat-big-num">50K+</div>
+            <div class="stat-big-label">Active Job Seekers</div>
+          </div>
+          <div class="stat-big-card">
+            <div class="stat-big-icon"><i class="fa-solid fa-check-circle"></i></div>
+            <div class="stat-big-num">95%</div>
+            <div class="stat-big-label">Success Rate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4: VALUES -->
+    <div class="section-pad">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">What We Believe</div>
+          <h2>Our <span class="accent">Core Values</span></h2>
+          <p>The principles that guide everything we do</p>
+        </div>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon"><i class="fa-solid fa-handshake"></i></div>
+            <h4>Trust & Transparency</h4>
+            <p>Every job listing is verified. No fake posts, no spam — just genuine opportunities from real employers.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <h4>Hyper-Local Focus</h4>
+            <p>We specialise in Tier-2 and Tier-3 cities, connecting local talent with nearby employers for meaningful careers.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><i class="fa-solid fa-bolt"></i></div>
+            <h4>Speed & Efficiency</h4>
+            <p>One-click apply, real-time updates, and fast hiring cycles — we respect your time and ambition.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><i class="fa-solid fa-users-gear"></i></div>
+            <h4>Community First</h4>
+            <p>We build tools for job seekers and employers alike, fostering a thriving local employment ecosystem.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 5: TIMELINE -->
+    <div class="section-pad alt-bg">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Our Journey</div>
+          <h2>Stackly <span class="accent">Timeline</span></h2>
+          <p>How we grew from an idea to India's trusted local job portal</p>
+        </div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2024</div>
+            <h4>Stackly is Born</h4>
+            <p>Founded in Coimbatore with a vision to transform local hiring. Launched with 200+ job listings from 50 partner companies.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2025</div>
+            <h4>Expansion Across Tamil Nadu</h4>
+            <p>Grew to 800+ companies and 1,000+ active listings. Expanded to Tirupur, Erode, Salem, and Pollachi markets.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2026</div>
+            <h4>50,000+ Job Seekers & Growing</h4>
+            <p>Crossed 50K active job seekers, 1,474+ live jobs, and 95% placement success rate. Launched employer branding and recruitment solutions.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2026 & Beyond</div>
+            <h4>Pan-India Vision</h4>
+            <p>Planning to expand across South India, bringing our hyper-local job portal model to every growing city in the country.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 6: TEAM -->
+    <div class="section-pad">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Leadership</div>
+          <h2>Meet the <span class="accent">Team</span></h2>
+          <p>The people behind Stackly working to transform local hiring in India</p>
+        </div>
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-avatar">RK</div>
+            <h4>Ravi Kumar</h4>
+            <div class="team-role">Founder & CEO</div>
+            <p>10+ years in recruitment technology. Passionate about making job hunting accessible in every Indian city.</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">SP</div>
+            <h4>Shreya Patel</h4>
+            <div class="team-role">Chief Operating Officer</div>
+            <p>Operations leader with extensive experience scaling platforms across Tier-2 and Tier-3 markets.</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">AM</div>
+            <h4>Arun Murugan</h4>
+            <div class="team-role">Head of Engineering</div>
+            <p>Full-stack architect who built the Stackly platform from the ground up with a focus on speed and reliability.</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">PN</div>
+            <h4>Priya Nandini</h4>
+            <div class="team-role">Head of Employer Partnerships</div>
+            <p>Builds relationships with 800+ companies to bring the best local job opportunities to Stackly users.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="section-pad alt-bg">
+      <div class="container">
+        <div class="cta-box" style="background:linear-gradient(135deg,rgba(14,165,233,0.12),rgba(6,182,212,0.06));border:1px solid rgba(14,165,233,0.2);border-radius:24px;padding:56px 44px;text-align:center;">
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(22px,3.5vw,32px);font-weight:700;color:#fff;margin-bottom:10px;">Join Stackly Today</h2>
+          <p style="color:var(--text-muted);font-size:15px;margin-bottom:28px;">Be part of India's growing local job revolution — whether you're hiring or job hunting.</p>
+          <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+            <a href="register.html" class="btn-primary-lg">Get Started Free</a>
+            <a href="contact.html" class="btn-outline-lg" style="border-color:var(--border);color:var(--text);">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const name = localStorage.getItem('stackly_user_name');
+      const signin = document.querySelector('.nav-actions a[href="signin.html"]');
+      const mobSignin = document.querySelector('.mob-signin');
+      const mobSignup = document.querySelector('.mob-signup');
+      const mobLogout = document.querySelector('.mob-logout');
+      if (name) {
+        if (signin) { signin.textContent = 'Hi, ' + name; signin.href = 'welcome.html'; }
+        if (mobSignin) mobSignin.style.display = 'none';
+        if (mobSignup) mobSignup.style.display = 'none';
+      } else if (mobLogout) { mobLogout.style.display = 'none'; }
+    })();
+    window.addEventListener('scroll', function() {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+    });
+  </script>
+</body>
+</html>
