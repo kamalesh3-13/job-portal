@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Categories | Stackly</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .page-wrapper { padding-top: 80px; min-height: 100vh; }
+    .page-hero { background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%); padding: 60px 0 40px; border-bottom: 1px solid var(--border); }
+    .page-hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px,5vw,42px); font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .page-hero p { color: var(--text-muted); font-size: 16px; }
+    .categories-section { padding: 60px 0 80px; }
+    .section-header { margin-bottom: 48px; text-align: center; }
+    .section-header h2 { font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .section-header p { color: var(--text-muted); font-size: 16px; }
+    .categories-full-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+    .cat-big-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 32px 28px; transition: all 0.25s; cursor: pointer; text-decoration: none; display: block; }
+    .cat-big-card:hover { border-color: rgba(14,165,233,0.45); transform: translateY(-4px); box-shadow: 0 14px 44px rgba(0,0,0,0.45); }
+    .cat-big-icon { width: 64px; height: 64px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 20px; background: var(--gradient-soft); color: var(--primary); }
+    .cat-big-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .cat-big-card .job-count { font-size: 14px; color: var(--primary); font-weight: 600; margin-bottom: 12px; }
+    .cat-big-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px; }
+    .cat-sub-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
+    .cat-sub-tags span { padding: 4px 10px; background: rgba(255,255,255,0.06); border: 1px solid var(--border); border-radius: 8px; font-size: 12px; color: var(--text-muted); }
+    .cat-explore { display: flex; align-items: center; gap: 6px; color: var(--primary); font-size: 14px; font-weight: 700; }
+    .cat-explore i { transition: transform 0.2s; }
+    .cat-big-card:hover .cat-explore i { transform: translateX(4px); }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><img src="assets/images/logo.webp" alt="Stackly" class="nav-logo-img" /></a>
+      <ul class="nav-links">
+        <li><a href="jobs.html">Find Jobs</a></li>
+        <li><a href="companies.html">Companies</a></li>
+        <li><a href="categories.html" style="color:var(--primary)">Categories</a></li>
+        <li><a href="index.html#how-it-works">How It Works</a></li>
+        <li><a href="index.html#testimonials">Reviews</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="signin.html" class="btn-outline">Sign In</a>
+        <a href="post-job.html" class="btn-primary">Post a Job</a>
+      </div>
+      <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open'); document.body.style.overflow='hidden';">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <a href="index.html" class="mob-logo">
+        <img src="assets/images/logo.webp" alt="Stackly" />
+      </a>
+      <button class="mobile-menu-close" onclick="this.closest('.mobile-menu').classList.remove('open'); document.body.style.overflow='';">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <ul>
+      <li><a href="jobs.html"><i class="fa-solid fa-magnifying-glass"></i> Find Jobs</a></li>
+      <li><a href="companies.html"><i class="fa-solid fa-building"></i> Companies</a></li>
+      <li><a href="categories.html"><i class="fa-solid fa-layer-group"></i> Categories</a></li>
+      <li><a href="index.html#how-it-works"><i class="fa-solid fa-circle-info"></i> How It Works</a></li>
+      <li><a href="index.html#testimonials"><i class="fa-solid fa-star"></i> Reviews</a></li>
+    </ul>
+        <div class="mobile-menu-footer">
+      <a href="signin.html" class="mob-signin"><i class="fa-solid fa-right-to-bracket"></i> Sign In</a>
+      <a href="register.html" class="mob-signup"><i class="fa-solid fa-user-plus"></i> Sign Up</a>
+      <a href="post-job.html" class="mob-post"><i class="fa-solid fa-plus"></i> Post a Job</a>
+      <button class="mob-logout" onclick="localStorage.removeItem('stackly_user_name'); window.location.href='index.html';"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+    </div>
+  </div>
+
+  <div class="page-wrapper">
+    <div class="page-hero">
+      <div class="container">
+        <h1>Browse <span class="accent">Job Categories</span> on Stackly</h1>
+        <p>Explore top hiring sectors across India</p>
+      </div>
+    </div>
+
+    <div class="categories-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>All <span class="accent">Categories</span></h2>
+          <p>Click any category to browse matching jobs on Stackly</p>
+        </div>
+        <div class="categories-full-grid">
+
+          <a href="jobs.html" class="cat-big-card">
+            <div class="cat-big-icon"><i class="fa-solid fa-laptop-code"></i></div>
+            <h3>IT / Software</h3>
+            <div class="job-count">320 jobs available</div>
+            <p>Software developers, QA engineers, system admins, and IT support roles across India's growing tech sector.</p>
+            <div class="cat-sub-tags"><span>Software Dev</span><span>QA</span><span>System Admin</span><span>IT Support</span></div>
+            <div class="cat-explore">Explore Jobs <i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+
+          <a href="jobs.html" class="cat-big-card">
+            <div class="cat-big-icon"><i class="fa-solid fa-industry"></i></div>
+            <h3>Manufacturing</h3>
+            <div class="job-count">218 jobs available</div>
+            <p>Production engineers, quality inspectors, plant operators and supervisors across India's industrial belts.</p>
+            <div class="cat-sub-tags"><span>Production</span><span>Quality</span><span>Plant Ops</span><span>SIPCOT</span></div>
+            <div class="cat-explore">Explore Jobs <i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+
+          <a href="jobs.html" class="cat-big-card">
+            <div class="cat-big-icon"><i class="fa-solid fa-headset"></i></div>
+            <h3>BPO / Call Centre</h3>
+            <div class="job-count">185 jobs available</div>
+            <p>Voice and non-voice process executives, team leads, and operations managers across India's BPO sector.</p>
+            <div class="cat-sub-tags"><span>Voice Process</span><span>Non-Voice</span><span>Team Lead</span><span>Fresher OK</span></div>
+            <div class="cat-explore">Explore Jobs <i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+
+          <a href="jobs.html" class="cat-big-card">
+            <div class="cat-big-icon"><i class="fa-solid fa-stethoscope"></i></div>
+            <h3>Healthcare</h3>
+            <div class="job-count">142 jobs available</div>
+            <p>Doctors, nurses, lab technicians, hospital admins, and paramedics at top hospitals and clinics nationwide.</p>
+            <div class="cat-sub-tags"><span>Nursing</span><span>Lab Tech</span><span>Hospital Admin</span><span>MBBS</span></div>
+            <div class="cat-explore">Explore Jobs <i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+
+          <a href="jobs.html" class="cat-big-card">
+            <div class="cat-big-icon"><i class="fa-solid fa-calculator"></i></div>
+            <h3>Accounts / Finance</h3>
+            <div class="job-count">198 jobs available</div>
+            <p>Accountants, auditors, finance managers, and GST specialists across India's commercial hubs.</p>
+            <div class="cat-sub-tags"><span>Tally</span><span>GST</span><span>Audit</span><span>SAP FICO</span></div>
+            <div class="cat-explore">Explore Jobs <i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+
+          <a href="jobs.html" class="cat-big-card">
+            <div class="cat-big-icon"><i class="fa-solid fa-shirt"></i></div>
+            <h3>Textile / Garments</h3>
+            <div class="job-count">110 jobs available</div>
+            <p>Knitting, spinning, weaving, quality control and merchandising roles in Tirupur and Coimbatore textile units.</p>
+            <div class="cat-sub-tags"><span>Knitting</span><span>Spinning</span><span>Merchandising</span><span>QC</span></div>
+            <div class="cat-explore">Explore Jobs <i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+
+          <a href="jobs.html" class="cat-big-card">
+            <div class="cat-big-icon"><i class="fa-solid fa-gears"></i></div>
+            <h3>Mechanical Engineering</h3>
+            <div class="job-count">134 jobs available</div>
+            <p>Design engineers, maintenance engineers and tool-room technicians in India's pump and auto component industry.</p>
+            <div class="cat-sub-tags"><span>AutoCAD</span><span>SolidWorks</span><span>CNC</span><span>Tool Design</span></div>
+            <div class="cat-explore">Explore Jobs <i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+
+          <a href="jobs.html" class="cat-big-card">
+            <div class="cat-big-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+            <h3>Education / Teaching</h3>
+            <div class="job-count">96 jobs available</div>
+            <p>School teachers, college lecturers, tutors and education administrators in private and government institutions nationwide.</p>
+            <div class="cat-sub-tags"><span>School</span><span>College</span><span>Tutor</span><span>Admin</span></div>
+            <div class="cat-explore">Explore Jobs <i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+
+          <a href="jobs.html" class="cat-big-card">
+            <div class="cat-big-icon"><i class="fa-solid fa-handshake"></i></div>
+            <h3>Sales / Marketing</h3>
+            <div class="job-count">162 jobs available</div>
+            <p>Field sales executives, business development managers and marketing specialists across industries nationwide.</p>
+            <div class="cat-sub-tags"><span>Field Sales</span><span>BDE</span><span>Digital Mktg</span><span>Channel Sales</span></div>
+            <div class="cat-explore">Explore Jobs <i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+
+          <a href="jobs.html" class="cat-big-card">
+            <div class="cat-big-icon"><i class="fa-solid fa-bolt"></i></div>
+            <h3>Electrical Engineering</h3>
+            <div class="job-count">88 jobs available</div>
+            <p>Electrical engineers, panel wiring technicians and maintenance electricians for India's pump and motor manufacturers.</p>
+            <div class="cat-sub-tags"><span>PLC</span><span>Panel Wiring</span><span>Maintenance</span><span>Motors</span></div>
+            <div class="cat-explore">Explore Jobs <i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+
+          <a href="jobs.html" class="cat-big-card">
+            <div class="cat-big-icon"><i class="fa-solid fa-building-columns"></i></div>
+            <h3>Banking / Insurance</h3>
+            <div class="job-count">74 jobs available</div>
+            <p>Bank officers, relationship managers, insurance advisors and loan executives at banks nationwide.</p>
+            <div class="cat-sub-tags"><span>Bank Officer</span><span>RM</span><span>Insurance</span><span>Loans</span></div>
+            <div class="cat-explore">Explore Jobs <i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+
+          <a href="jobs.html" class="cat-big-card">
+            <div class="cat-big-icon"><i class="fa-solid fa-user-graduate"></i></div>
+            <h3>Fresher / Entry Level</h3>
+            <div class="job-count">198 jobs available</div>
+            <p>Jobs for fresh graduates from B.E., B.Sc., B.Com, BCA and MBA across all sectors in India — no experience needed.</p>
+            <div class="cat-sub-tags"><span>B.E. Fresher</span><span>MBA Trainee</span><span>B.Com</span><span>Walk-in</span></div>
+            <div class="cat-explore">Explore Jobs <i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const name = localStorage.getItem('stackly_user_name');
+      const signin = document.querySelector('.nav-actions a[href="signin.html"]');
+      const mobSignin = document.querySelector('.mob-signin');
+      const mobSignup = document.querySelector('.mob-signup');
+      const mobLogout = document.querySelector('.mob-logout');
+      if (name) {
+        if (signin) { signin.textContent = 'Hi, ' + name; signin.href = 'welcome.html'; }
+        if (mobSignin) mobSignin.style.display = 'none';
+        if (mobSignup) mobSignup.style.display = 'none';
+      } else if (mobLogout) {
+        mobLogout.style.display = 'none';
+      }
+    })();
+
+    window.addEventListener('scroll', function() {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+    });
+  </script>
+</body>
+</html>

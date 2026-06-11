@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Top Hiring Companies | Stackly</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .page-wrapper { padding-top: 80px; min-height: 100vh; }
+    .page-hero { background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%); padding: 60px 0 40px; border-bottom: 1px solid var(--border); }
+    .page-hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px,5vw,42px); font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .page-hero p { color: var(--text-muted); font-size: 16px; }
+    .search-bar-full { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+    .search-bar-full input, .search-bar-full select { flex: 1; min-width: 160px; padding: 13px 16px; background: rgba(255,255,255,0.06); border: 1px solid var(--border); border-radius: 12px; color: var(--text); font-size: 15px; font-family: 'Inter', sans-serif; outline: none; }
+    .search-bar-full input::placeholder { color: var(--text-muted); }
+    .search-bar-full select option { background: #1e293b; }
+    .search-bar-full button { padding: 13px 28px; background: var(--gradient); border: none; border-radius: 12px; color: #fff; font-size: 15px; font-weight: 700; font-family: 'Inter', sans-serif; cursor: pointer; }
+    .companies-section { padding: 60px 0 80px; }
+    .section-header { margin-bottom: 40px; }
+    .section-header h2 { font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .section-header p { color: var(--text-muted); }
+    .companies-big-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+    .company-big-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 28px; transition: all 0.25s; cursor: pointer; }
+    .company-big-card:hover { border-color: rgba(14,165,233,0.4); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.45); }
+    .co-header { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+    .co-big-logo { width: 60px; height: 60px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; }
+    .co-big-logo.it { background: rgba(14,165,233,0.15); color: #0ea5e9; }
+    .co-big-logo.mfg { background: rgba(255,153,0,0.15); color: #FF9900; }
+    .co-big-logo.bpo { background: rgba(16,185,129,0.15); color: #10B981; }
+    .co-big-logo.health { background: rgba(239,68,68,0.15); color: #EF4444; }
+    .co-big-logo.finance { background: rgba(139,92,246,0.15); color: #8B5CF6; }
+    .co-big-logo.textile { background: rgba(234,179,8,0.15); color: #EAB308; }
+    .co-big-logo.auto { background: rgba(99,91,255,0.15); color: #635BFF; }
+    .co-big-logo.edu { background: rgba(236,72,153,0.15); color: #EC4899; }
+    .co-info h4 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .co-info p { font-size: 13px; color: var(--text-muted); }
+    .co-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; }
+    .co-stats { display: flex; gap: 16px; margin-bottom: 16px; }
+    .co-stat { font-size: 13px; color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
+    .co-stat i { color: var(--primary); }
+    .co-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
+    .co-tags span { padding: 4px 10px; background: rgba(255,255,255,0.06); border: 1px solid var(--border); border-radius: 8px; font-size: 12px; color: var(--text-muted); }
+    .btn-view-co { display: block; text-align: center; padding: 11px; background: var(--gradient); border-radius: 10px; color: #fff; font-size: 14px; font-weight: 700; text-decoration: none; transition: opacity 0.2s; }
+    .btn-view-co:hover { opacity: 0.9; }
+    .co-rating { display: flex; align-items: center; gap: 4px; font-size: 13px; color: #F59E0B; }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><img src="assets/images/logo.webp" alt="Stackly" class="nav-logo-img" /></a>
+      <ul class="nav-links">
+        <li><a href="jobs.html">Find Jobs</a></li>
+        <li><a href="companies.html" style="color:var(--primary)">Companies</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="index.html#how-it-works">How It Works</a></li>
+        <li><a href="index.html#testimonials">Reviews</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="signin.html" class="btn-outline">Sign In</a>
+        <a href="post-job.html" class="btn-primary">Post a Job</a>
+      </div>
+      <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open'); document.body.style.overflow='hidden';">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <a href="index.html" class="mob-logo">
+        <img src="assets/images/logo.webp" alt="Stackly" />
+      </a>
+      <button class="mobile-menu-close" onclick="this.closest('.mobile-menu').classList.remove('open'); document.body.style.overflow='';">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <ul>
+      <li><a href="jobs.html"><i class="fa-solid fa-magnifying-glass"></i> Find Jobs</a></li>
+      <li><a href="companies.html"><i class="fa-solid fa-building"></i> Companies</a></li>
+      <li><a href="categories.html"><i class="fa-solid fa-layer-group"></i> Categories</a></li>
+      <li><a href="index.html#how-it-works"><i class="fa-solid fa-circle-info"></i> How It Works</a></li>
+      <li><a href="index.html#testimonials"><i class="fa-solid fa-star"></i> Reviews</a></li>
+    </ul>
+        <div class="mobile-menu-footer">
+      <a href="signin.html" class="mob-signin"><i class="fa-solid fa-right-to-bracket"></i> Sign In</a>
+      <a href="register.html" class="mob-signup"><i class="fa-solid fa-user-plus"></i> Sign Up</a>
+      <a href="post-job.html" class="mob-post"><i class="fa-solid fa-plus"></i> Post a Job</a>
+      <button class="mob-logout" onclick="localStorage.removeItem('stackly_user_name'); window.location.href='index.html';"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+    </div>
+  </div>
+
+  <div class="page-wrapper">
+    <div class="page-hero">
+      <div class="container">
+        <h1>Top <span class="accent">Companies</span> on Stackly</h1>
+        <p>Discover 800+ companies actively recruiting across India</p>
+        <div class="search-bar-full">
+          <input type="text" placeholder="Company name or industry..." id="companySearchInput" />
+          <select>
+            <option>All Industries</option>
+            <option>IT / Software</option><option>Manufacturing</option><option>Healthcare</option>
+            <option>BPO / Call Centre</option><option>Textile / Garments</option><option>Automobile</option>
+          </select>
+          <select>
+            <option>Company Size</option>
+            <option>1–50 employees</option><option>51–200</option><option>201–1,000</option><option>1,000+</option>
+          </select>
+          <button onclick="filterCompanies()"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="companies-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Featured <span class="accent">Employers on Stackly</span></h2>
+          <p>Top-rated companies with the best work culture and benefits</p>
+        </div>
+        <div class="companies-big-grid">
+
+          <div class="company-big-card">
+            <div class="co-header">
+              <div class="co-big-logo it"><i class="fa-solid fa-laptop-code"></i></div>
+              <div class="co-info"><h4>LG Soft India</h4><p>IT / Software · Peelamedu, Coimbatore</p></div>
+            </div>
+            <p class="co-desc">Leading IT company delivering enterprise software solutions and R&D services across global markets.</p>
+            <div class="co-stats">
+              <span class="co-stat"><i class="fa-solid fa-briefcase"></i> 42 open roles</span>
+              <span class="co-stat"><i class="fa-solid fa-users"></i> 500+ employees</span>
+            </div>
+            <div class="co-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> 4.5</div>
+            <div class="co-tags" style="margin-top:10px"><span>IT Park</span><span>Good Benefits</span><span>Growth</span></div>
+            <a href="jobs.html" class="btn-view-co" style="margin-top:16px">View 42 Jobs</a>
+          </div>
+
+          <div class="company-big-card">
+            <div class="co-header">
+              <div class="co-big-logo mfg"><i class="fa-solid fa-industry"></i></div>
+              <div class="co-info"><h4>Roots Industries India Ltd</h4><p>Auto Components · SIPCOT, Coimbatore</p></div>
+            </div>
+            <p class="co-desc">A flagship manufacturer of auto parts, seating systems and horn systems supplying Maruti, Tata, and Hyundai.</p>
+            <div class="co-stats">
+              <span class="co-stat"><i class="fa-solid fa-briefcase"></i> 28 open roles</span>
+              <span class="co-stat"><i class="fa-solid fa-users"></i> 3,000+ employees</span>
+            </div>
+            <div class="co-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i> 4.2</div>
+            <div class="co-tags" style="margin-top:10px"><span>Manufacturing</span><span>SIPCOT</span><span>Auto Parts</span></div>
+            <a href="jobs.html" class="btn-view-co" style="margin-top:16px">View 28 Jobs</a>
+          </div>
+
+          <div class="company-big-card">
+            <div class="co-header">
+              <div class="co-big-logo auto"><i class="fa-solid fa-car"></i></div>
+              <div class="co-info"><h4>TVS Group</h4><p>Automobile / Diversified · Coimbatore</p></div>
+            </div>
+            <p class="co-desc">One of India's most respected conglomerates, headquartered in Coimbatore. Spans two-wheelers, logistics, electronics and more.</p>
+            <div class="co-stats">
+              <span class="co-stat"><i class="fa-solid fa-briefcase"></i> 65 open roles</span>
+              <span class="co-stat"><i class="fa-solid fa-users"></i> 50,000+ employees</span>
+            </div>
+            <div class="co-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> 4.7</div>
+            <div class="co-tags" style="margin-top:10px"><span>Heritage Brand</span><span>Stable</span><span>PF & ESI</span></div>
+            <a href="jobs.html" class="btn-view-co" style="margin-top:16px">View 65 Jobs</a>
+          </div>
+
+          <div class="company-big-card">
+            <div class="co-header">
+              <div class="co-big-logo health"><i class="fa-solid fa-hospital"></i></div>
+              <div class="co-info"><h4>KG Hospital</h4><p>Healthcare · Avanashi Road, Coimbatore</p></div>
+            </div>
+            <p class="co-desc">A leading multi-speciality hospital with over 30 departments and 500+ beds. NABH accredited.</p>
+            <div class="co-stats">
+              <span class="co-stat"><i class="fa-solid fa-briefcase"></i> 37 open roles</span>
+              <span class="co-stat"><i class="fa-solid fa-users"></i> 2,000+ employees</span>
+            </div>
+            <div class="co-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> 4.6</div>
+            <div class="co-tags" style="margin-top:10px"><span>NABH Accredited</span><span>Medical</span><span>Growth</span></div>
+            <a href="jobs.html" class="btn-view-co" style="margin-top:16px">View 37 Jobs</a>
+          </div>
+
+          <div class="company-big-card">
+            <div class="co-header">
+              <div class="co-big-logo bpo"><i class="fa-solid fa-headset"></i></div>
+              <div class="co-info"><h4>Wipro BPS</h4><p>BPO / IT Services · Coimbatore</p></div>
+            </div>
+            <p class="co-desc">Wipro's Business Process Services unit handles voice and non-voice processes for global clients.</p>
+            <div class="co-stats">
+              <span class="co-stat"><i class="fa-solid fa-briefcase"></i> 54 open roles</span>
+              <span class="co-stat"><i class="fa-solid fa-users"></i> 1,500+ employees</span>
+            </div>
+            <div class="co-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i> 4.1</div>
+            <div class="co-tags" style="margin-top:10px"><span>Fresher Friendly</span><span>BPO</span><span>Night Shift</span></div>
+            <a href="jobs.html" class="btn-view-co" style="margin-top:16px">View 54 Jobs</a>
+          </div>
+
+          <div class="company-big-card">
+            <div class="co-header">
+              <div class="co-big-logo finance"><i class="fa-solid fa-landmark"></i></div>
+              <div class="co-info"><h4>City Union Bank</h4><p>Banking / Finance · Coimbatore</p></div>
+            </div>
+            <p class="co-desc">Established Tamil Nadu-based bank, offering retail and corporate banking services.</p>
+            <div class="co-stats">
+              <span class="co-stat"><i class="fa-solid fa-briefcase"></i> 19 open roles</span>
+              <span class="co-stat"><i class="fa-solid fa-users"></i> 8,000+ employees</span>
+            </div>
+            <div class="co-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i> 4.3</div>
+            <div class="co-tags" style="margin-top:10px"><span>Banking</span><span>Stable Career</span><span>Tamil Nadu</span></div>
+            <a href="jobs.html" class="btn-view-co" style="margin-top:16px">View 19 Jobs</a>
+          </div>
+
+          <div class="company-big-card">
+            <div class="co-header">
+              <div class="co-big-logo textile"><i class="fa-solid fa-shirt"></i></div>
+              <div class="co-info"><h4>Tirupur Knits Ltd</h4><p>Textile / Garments · Tirupur</p></div>
+            </div>
+            <p class="co-desc">One of Tirupur's leading knitwear exporters, supplying premium garments to brands across Europe and North America.</p>
+            <div class="co-stats">
+              <span class="co-stat"><i class="fa-solid fa-briefcase"></i> 23 open roles</span>
+              <span class="co-stat"><i class="fa-solid fa-users"></i> 1,200+ employees</span>
+            </div>
+            <div class="co-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i> 4.0</div>
+            <div class="co-tags" style="margin-top:10px"><span>Exports</span><span>Knitwear</span><span>Tirupur</span></div>
+            <a href="jobs.html" class="btn-view-co" style="margin-top:16px">View 23 Jobs</a>
+          </div>
+
+          <div class="company-big-card">
+            <div class="co-header">
+              <div class="co-big-logo edu"><i class="fa-solid fa-graduation-cap"></i></div>
+              <div class="co-info"><h4>PSG College of Technology</h4><p>Education · Peelamedu, Coimbatore</p></div>
+            </div>
+            <p class="co-desc">One of Tamil Nadu's top autonomous engineering colleges, home to research labs, incubators, and a 75-year legacy of excellence.</p>
+            <div class="co-stats">
+              <span class="co-stat"><i class="fa-solid fa-briefcase"></i> 14 open roles</span>
+              <span class="co-stat"><i class="fa-solid fa-users"></i> 1,000+ employees</span>
+            </div>
+            <div class="co-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> 4.8</div>
+            <div class="co-tags" style="margin-top:10px"><span>Education</span><span>Research</span><span>Prestigious</span></div>
+            <a href="jobs.html" class="btn-view-co" style="margin-top:16px">View 14 Jobs</a>
+          </div>
+
+          <div class="company-big-card">
+            <div class="co-header">
+              <div class="co-big-logo mfg"><i class="fa-solid fa-pump-medical"></i></div>
+              <div class="co-info"><h4>Pricol Limited</h4><p>Auto Instruments · Coimbatore</p></div>
+            </div>
+            <p class="co-desc">Global leader in driver information systems and auto components headquartered in Coimbatore, supplying to 30+ countries.</p>
+            <div class="co-stats">
+              <span class="co-stat"><i class="fa-solid fa-briefcase"></i> 31 open roles</span>
+              <span class="co-stat"><i class="fa-solid fa-users"></i> 5,000+ employees</span>
+            </div>
+            <div class="co-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i> 4.4</div>
+            <div class="co-tags" style="margin-top:10px"><span>Global</span><span>Instruments</span><span>Export</span></div>
+            <a href="jobs.html" class="btn-view-co" style="margin-top:16px">View 31 Jobs</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const name = localStorage.getItem('stackly_user_name');
+      const signin = document.querySelector('.nav-actions a[href="signin.html"]');
+      const mobSignin = document.querySelector('.mob-signin');
+      const mobSignup = document.querySelector('.mob-signup');
+      const mobLogout = document.querySelector('.mob-logout');
+      if (name) {
+        if (signin) { signin.textContent = 'Hi, ' + name; signin.href = 'welcome.html'; }
+        if (mobSignin) mobSignin.style.display = 'none';
+        if (mobSignup) mobSignup.style.display = 'none';
+      } else if (mobLogout) {
+        mobLogout.style.display = 'none';
+      }
+    })();
+
+    window.addEventListener('scroll', function() {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    function filterCompanies() {
+      const q = document.getElementById('companySearchInput').value.toLowerCase();
+      document.querySelectorAll('.company-big-card').forEach(card => {
+        card.style.display = card.textContent.toLowerCase().includes(q) ? '' : 'none';
+      });
+    }
+
+    document.getElementById('companySearchInput').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') { e.preventDefault(); filterCompanies(); }
+    });
+  </script>
+</body>
+</html>

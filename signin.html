@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In | Stackly</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .auth-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .auth-page .shape { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.1; }
+    .auth-page .shape-1 { width: 500px; height: 500px; background: #0ea5e9; top: -150px; right: -100px; }
+    .auth-page .shape-2 { width: 350px; height: 350px; background: #06b6d4; bottom: -80px; left: -80px; }
+
+    .auth-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 48px 40px;
+      width: 100%;
+      max-width: 460px;
+      position: relative;
+      z-index: 1;
+      box-shadow: var(--shadow);
+    }
+    .auth-logo { text-align: center; margin-bottom: 32px; }
+    .auth-logo img { height: 44px; width: auto; filter: drop-shadow(0 0 8px rgba(14,165,233,0.45)); }
+
+    .auth-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .auth-sub { color: var(--text-muted); text-align: center; margin-bottom: 32px; font-size: 15px; }
+
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+    .form-group input {
+      width: 100%;
+      padding: 13px 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .form-group input:focus { border-color: var(--primary); background: rgba(14,165,233,0.06); }
+    .form-group input::placeholder { color: var(--text-muted); }
+
+    .form-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+    .remember-me { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-muted); cursor: pointer; }
+    .remember-me input[type="checkbox"] { accent-color: var(--primary); width: 16px; height: 16px; }
+    .forgot-link { font-size: 14px; color: var(--primary); text-decoration: none; font-weight: 600; }
+    .forgot-link:hover { text-decoration: underline; }
+
+    .btn-auth {
+      width: 100%;
+      padding: 14px;
+      background: var(--gradient);
+      border: none;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(14,165,233,0.35);
+      transition: all 0.2s;
+      margin-bottom: 24px;
+    }
+    .btn-auth:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    .auth-divider { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .auth-divider span { flex: 1; height: 1px; background: var(--border); }
+    .auth-divider p { color: var(--text-muted); font-size: 13px; white-space: nowrap; }
+
+    .btn-social {
+      width: 100%;
+      padding: 13px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.2s;
+      margin-bottom: 12px;
+      text-decoration: none;
+    }
+    .btn-social:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.2); }
+    .btn-social i { font-size: 18px; }
+    .btn-social.google i { color: #EA4335; }
+    .btn-social.linkedin i { color: #0A66C2; }
+
+    .auth-footer { text-align: center; margin-top: 28px; font-size: 14px; color: var(--text-muted); }
+    .auth-footer a { color: var(--primary); font-weight: 600; text-decoration: none; }
+    .auth-footer a:hover { text-decoration: underline; }
+
+    .back-home {
+      position: fixed;
+      top: 20px;
+      left: 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      z-index: 10;
+      transition: color 0.2s;
+    }
+    .back-home:hover { color: var(--primary); }
+
+    @media (max-width: 480px) {
+      .auth-card { padding: 36px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back-home"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+
+  <div class="auth-page">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+
+    <div class="auth-card">
+      <div class="auth-logo">
+        <a href="index.html">
+          <img src="assets/images/logo.webp" alt="Stackly" />
+        </a>
+      </div>
+
+      <h1 class="auth-title">Welcome Back</h1>
+      <p class="auth-sub">Sign in to your Stackly account</p>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="you@example.com" />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" />
+      </div>
+
+      <div class="form-row">
+        <label class="remember-me">
+          <input type="checkbox" /> Remember me
+        </label>
+        <a href="#" class="forgot-link">Forgot password?</a>
+      </div>
+
+      <button class="btn-auth" onclick="handleSignIn()">
+        <i class="fa-solid fa-right-to-bracket"></i> Sign In
+      </button>
+
+      <div class="auth-divider">
+        <span></span><p>or continue with</p><span></span>
+      </div>
+
+      <a href="#" class="btn-social google">
+        <i class="fa-brands fa-google"></i> Continue with Google
+      </a>
+      <a href="#" class="btn-social linkedin">
+        <i class="fa-brands fa-linkedin"></i> Continue with LinkedIn
+      </a>
+
+      <div class="auth-footer">
+        Don't have an account? <a href="register.html">Create one free</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function handleSignIn() {
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      if (!email || !password) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      // Extract first name from email — split on dots/underscores/hyphens/digits
+      let raw = email.split('@')[0];
+      let name = raw.split(/[._\-0-9]+/)[0].replace(/[^a-zA-Z]/g,'').trim();
+      if (!name || name.length < 2) name = raw.replace(/[^a-zA-Z]/g,'').slice(0,12) || 'Friend';
+      name = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+
+      // Save name and redirect to welcome page
+      localStorage.setItem('stackly_user_name', name);
+      window.location.href = 'welcome.html?name=' + encodeURIComponent(name);
+    }
+  </script>
+</body>
+</html>
